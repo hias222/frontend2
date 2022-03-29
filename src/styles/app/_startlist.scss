@@ -1,0 +1,95 @@
+$farbeschrift: black;
+$farbeuhr: rgb(33, 150, 243);
+
+.heatheadertime {
+    text-align: right;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.heatevent{
+    color: $farbeschrift;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.messagetext{
+    text-align: center;
+    align-content: center;
+}
+
+.message_clock {
+    .react-clock {
+
+        &__face {
+            border-color: $farbeuhr;  
+          }
+
+        &__mark {
+            &__body {
+                background-color: $farbeuhr;
+              }
+          }
+        
+        &__minute-mark {
+            background-color: $farbeuhr;
+        }
+
+        &__hand {
+          &__body {
+            background-color: $farbeuhr;
+          }
+
+        }
+        &__hour-hand {
+          &__body {
+              background-color: $farbeuhr;
+          }
+
+        }
+    }
+
+}
+
+//
+
+@keyframes ticker {
+    20% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+  }
+
+.ticker-move {
+    display: inline-block;
+    white-space: nowrap;
+    //padding-right: px;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 6s;
+  }
+
+  .ticker-item{
+    display: inline-block;
+    padding: 0 4px;
+  }
+
+  // video
+
+  .videotable {
+    border-spacing: 0;
+    width: 512px;
+    height: 384px;
+    border-spacing: 0;
+    background-color: black;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-spacing: 0px;
+    padding: 0px;
+    border-collapse: collapse;
+}
+
+.staticmessagetable{
+    border-spacing: 0;
+    width: 100%;
+}
