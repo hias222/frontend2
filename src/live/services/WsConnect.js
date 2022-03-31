@@ -14,6 +14,12 @@ this.state = {
 */
 function WsConnect() {
 
+  var context_path = process.env.REACT_APP_BACKEND_CONTEX_PATH === undefined ? "/ws2/socket.io" : "/" + process.env.REACT_APP_BACKEND_CONTEX_PATH + "/socket.io"
+  var get_backend_port = process.env.REACT_APP_BACKEND_PORT === undefined ? "4001" : process.env.REACT_APP_BACKEND_PORT
+  var get_backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ? window.location.protocol + "//" + window.location.hostname + ":" + window.location.port : process.env.REACT_APP_BACKEND_URL
+  var backend_url = get_backend_url === undefined ? window.location.protocol + "//" + window.location.hostname + ":" + get_backend_port : get_backend_url
+
+
   function sayHello() {
     console.log(socket)
   }
@@ -28,22 +34,24 @@ function WsConnect() {
     console.log('disconnect')
   }
 
-   const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = socketIOClient('http://localhost:4001',{
-      path: '/ws/socket.io'
+
+    console.log(backend_url + ' Context ' + context_path)
+    const newSocket = socketIOClient(backend_url, {
+      path: context_path
     });
 
-    newSocket.io.on('connect', () => {
-      console.log("WsSocketState: connected http://localhost:4001 socket-io");
+    newSocket.on('connect', () => {
+      console.log('WsSocketState: connected ' + backend_url + context_path);
     });
 
     newSocket.io.on('error', (error) => {
-      console.log("WsSocketState: error  socket-io");
+      console.log("WsSocketState: error socket-io " + backend_url + context_path);
       console.log(error)
     });
-    
+
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);

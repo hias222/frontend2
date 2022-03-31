@@ -1,20 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Messages.css';
 
 function Messages({ socket }) {
 
+  const [message, setMessage] = useState(' - - ');
+
   useEffect(() => {
-    console.log('hello')
+    
     const messageListener = (message) => {
         console.log('new Message')
-        console.log(message)
-      
+        setMessage(message)
+
     };
 
-    socket.on('connect', () => {
-        console.log("WsSocketState: connected  socket-io");
-      });
-  
     socket.on('FromAPI', messageListener);
 
     return () => {
@@ -24,7 +22,7 @@ function Messages({ socket }) {
 
   return (
     <div className="message-list">
-      HEllo
+      {message}
     </div>
   );
 }
