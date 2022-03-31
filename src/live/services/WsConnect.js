@@ -14,20 +14,36 @@ this.state = {
 */
 function WsConnect() {
 
+  function sayHello() {
+    console.log(socket)
+  }
+
+  function connectWS() {
+    socket.connect()
+    console.log('connect')
+  }
+
+  function disconnectWS() {
+    socket.disconnect()
+    console.log('disconnect')
+  }
+
    const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = socketIOClient('http://ubuntu.fritz.box',{
+    const newSocket = socketIOClient('http://localhost:4001',{
       path: '/ws/socket.io'
     });
 
-    socket.on('connect', () => {
-      console.log("WsSocketState: connected  socket-io");
+    newSocket.io.on('connect', () => {
+      console.log("WsSocketState: connected http://localhost:4001 socket-io");
     });
 
-    socket.on()
-
-
+    newSocket.io.on('error', (error) => {
+      console.log("WsSocketState: error  socket-io");
+      console.log(error)
+    });
+    
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
@@ -44,6 +60,9 @@ function WsConnect() {
       ) : (
         <div>Not Connected</div>
       )}
+      <button onClick={sayHello}>Log</button>
+      <button onClick={connectWS}>Connect</button>
+      <button onClick={disconnectWS}>DISConnect</button>
     </div>
   );
 }
