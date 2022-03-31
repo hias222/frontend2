@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Overall
+
+<https://developer.okta.com/blog/2021/07/14/socket-io-react-tutorial>
+
 ## Available Scripts
 
 In the project directory, you can run:

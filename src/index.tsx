@@ -3,14 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from './pages/Header';
+import WsConnect from './live/services/WsConnect';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/frontend">
-    <Header />
-      <App />
+      <Header />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/live" element={<WsConnect />} />
+      </Routes>
+
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
