@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client'
-import Messages from './Messages';
+import WkAnalyseData from './WsAnalyseData';
 
 
 /*
@@ -19,9 +19,17 @@ function WsConnect() {
   var get_backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ? window.location.protocol + "//" + window.location.hostname + ":" + window.location.port : process.env.REACT_APP_BACKEND_URL
   var backend_url = get_backend_url === undefined ? window.location.protocol + "//" + window.location.hostname + ":" + get_backend_port : get_backend_url
 
+  function printEnvironment(){
+    console.log('context_path: ' + context_path + ' (REACT_APP_BACKEND_CONTEX_PATH)')
+    console.log('get_backend_port: ' + get_backend_port + ' (REACT_APP_BACKEND_PORT)')
+    console.log('get_backend_url: ' + get_backend_url + ' (REACT_APP_BACKEND_DIRECT true/false)')
+    console.log('backend_url: ' + backend_url + ' (REACT_APP_BACKEND_URL when false)')
+  }
+ 
 
   function sayHello() {
     console.log(socket)
+    printEnvironment()
   }
 
   function connectWS() {
@@ -63,7 +71,7 @@ function WsConnect() {
       </header>
       {socket ? (
         <div className="chat-container">
-          <Messages socket={socket} />
+          <WkAnalyseData socket={socket}/>
         </div>
       ) : (
         <div>Not Connected</div>
