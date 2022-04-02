@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client'
-import WkAnalyseData from './WsAnalyseData';
+import WkAnalyseData from '../live/services/WsAnalyseData';
 
 
 /*

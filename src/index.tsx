@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from './pages/Header';
-import WsConnect from './live/services/WsConnect';
+import WsConnect from './pages/WsConnect';
 
 
 ReactDOM.render(
