@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { eventHeat } from '../..//shared/types/EventHeat';
 import { LaneState } from '../../shared/state/LaneState'
 import { BaseFrontendComponent } from '../components/BaseFrontendComponent';

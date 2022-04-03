@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client'
 import WkAnalyseData from '../live/services/WsAnalyseData';
 
+import '../styles/App.scss';
 
 /*
 this.state = {
@@ -66,9 +67,6 @@ function WsConnect() {
 
   return (
     <div className="App">
-      <header className="app-header">
-        React Chat
-      </header>
       {socket ? (
         <div className="chat-container">
           <WkAnalyseData socket={socket}/>
