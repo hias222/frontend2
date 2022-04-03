@@ -9,14 +9,6 @@ import { Grid } from "@mui/material";
 
 export class BaseFrontendComponent extends React.Component<BaseFrontendInterface, {}> {
 
-    componentDidUpdate(prevProps: BaseFrontendInterface) {
-
-        if (prevProps.lanes !== this.props.lanes) {
-            console.log("update BaseFrontendStaticComponent lanes")
-            console.log("update " + JSON.stringify(this.props.lanes))
-        }
-    }
-
     render() {
 
         let heatheadertime = classnames("heatheadertime")

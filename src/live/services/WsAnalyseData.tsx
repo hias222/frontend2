@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
-import getSwimStyles from '../utilities/getSwimStyles';
-import { BaseFrontendComponent } from '../components/BaseFrontendComponent';
+import { useEffect, useState } from 'react';
+// import getSwimStyles from '../utilities/getSwimStyles';
 import DataMapper from './DataMapper';
 
 /*
@@ -21,6 +19,8 @@ function WkAnalyseData({ socket }: { socket: any }) {
     const [DisplayMode, setDisplayMode] = useState('');
     const [CompetitionName, setCompetitionName] = useState('')
     const [JsonData, setJsonData] = useState('');
+    const [startdelayms, setStartdelayms] = useState<number>(0);
+    const [runningTime, setRunningTime] = useState('0');
 
     function setHeaderInfo(jsondata: any) {
 
@@ -28,22 +28,24 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
             setDisplayMode('startlist')
 
-            var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
-                ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
-
             /*
-          this.props.onEventHeatChange({
-            name: swimstyle,
-            eventnr: jsondata.event,
-            heatnr: jsondata.heat,
-            competition: jsondata.competition,
-            distance: jsondata.distance,
-            gender: jsondata.gender,
-            relaycount: jsondata.relaycount,
-            round: jsondata.round,
-            swimstyle: jsondata.swimstyle
-          })
-          */
+
+         var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
+             ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
+
+      
+       this.props.onEventHeatChange({
+         name: swimstyle,
+         eventnr: jsondata.event,
+         heatnr: jsondata.heat,
+         competition: jsondata.competition,
+         distance: jsondata.distance,
+         gender: jsondata.gender,
+         relaycount: jsondata.relaycount,
+         round: jsondata.round,
+         swimstyle: jsondata.swimstyle
+       })
+       */
 
             setHeatNumber(jsondata.heat)
             setEventNumber(jsondata.event)
@@ -93,20 +95,36 @@ function WkAnalyseData({ socket }: { socket: any }) {
             }
         }
     }
-    
+
+    function setStartMode(startdelay: number) {
+        var calcstartdelay = typeof (startdelay) != 'undefined' ? startdelay : 100
+        console.log('startdelay ' + calcstartdelay)
+        //if (this.state.DisplayMode === 'message' || this.state.DisplayMode === 'clock' || this.state.DisplayMode === 'video') {
+        setDisplayMode('startlist')
+        //}
+        setStartdelayms(calcstartdelay)
+    }
+
+    function setRunningTimeString(time: any) {
+        if (time.value === "undefined" || !time.value) {
+            setRunningTime("0")
+        } else {
+            setRunningTime(time.value);
+        }
+    }
+
     function checkIncoming(jsondata: any) {
         //console.log(jsondata)
         var messageType = jsondata.type
         //console.log("message type: " + messageType)
         switch (messageType) {
             case "start": {
-                //this.setStartMode(jsondata.diff)
-                console.log(jsondata.diff)
+                setStartMode(jsondata.diff)
                 break;
             }
             case "stop": {
-                //this.props.onStartStop(-1)
-                console.log('-1')
+                console.log('stop')
+                setStartdelayms(-1);
                 break;
             }
             case "header": {
@@ -115,7 +133,6 @@ function WkAnalyseData({ socket }: { socket: any }) {
             }
             case "lane": {
                 setLaneInfo(jsondata)
-                //console.log('lane')
                 break;
             }
             case "clear": {
@@ -127,13 +144,15 @@ function WkAnalyseData({ socket }: { socket: any }) {
             }
             case "startlist": {
                 // ???
-                //this.setDisplayMode("startlist")
-                console.log('startlist')
+                if (DisplayMode !== 'startlist') {
+                    setDisplayMode("startlist")
+                    console.log('startlist')
+                }
                 break;
             }
             case "race": {
                 // ???
-                //this.setDisplayMode("race")
+                setDisplayMode("race")
                 console.log('race')
                 break;
             }
@@ -144,7 +163,7 @@ function WkAnalyseData({ socket }: { socket: any }) {
                 break;
             }
             case "time": {
-                //this.setRunningTime(jsondata)
+                setRunningTimeString(jsondata)
                 console.log('time')
                 break;
             }
@@ -186,6 +205,7 @@ function WkAnalyseData({ socket }: { socket: any }) {
         return () => {
             socket.off('message', messageListener);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [socket, EventNumber, HeatNumber]);
 
 
@@ -197,6 +217,8 @@ function WkAnalyseData({ socket }: { socket: any }) {
                 jsonData={JsonData}
                 heatNumber={HeatNumber}
                 eventNumber={EventNumber}
+                startdelayms={startdelayms}
+                runningtime={runningTime}
             />
         </div>
     );

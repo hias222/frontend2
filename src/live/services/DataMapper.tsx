@@ -27,7 +27,9 @@ function DataMapper(model: {
     jsonData: any;
     DisplayMode: string;
     heatNumber: string;
-    eventNumber: string
+    eventNumber: string;
+    startdelayms: number;
+    runningtime: string;
 }) {
 
     const [eventHeat, setEventHeat] = useState<eventHeat>({ eventnr: '0', heatnr: '0', name: '' });
@@ -71,7 +73,7 @@ function DataMapper(model: {
                 mylane.push(LaneData)
             } else {
                 mylane[lane - 1 + correctValueForLaneNull] = (LaneData)
-                console.log(lane + ": lane change (" + correctValueForLaneNull + ")")
+                //console.log(lane + ": lane change (" + correctValueForLaneNull + ")")
             }
             setLanes(mylane)
         }
@@ -81,44 +83,16 @@ function DataMapper(model: {
         if (model.jsonData.lane !== undefined) {
             if (model.jsonData !== jsonData) {
                 setJsonData(model.jsonData)
-                console.log('DataMapper jsondata ' + model.jsonData.lane)
+                //console.log('DataMapper jsondata ' + model.jsonData.lane)
                 onLaneChange(model.jsonData.lane,model.jsonData)
             }
         }
     }
-    
-    /*
-
-    useEffect(() => {
-
-        if(model.DisplayMode === 'header')
-        {
-            let evenHeat2: eventHeat = {
-                name: model.CompetitionName,
-                heatnr: model.heatNumber,
-                eventnr: model.eventNumber
-            }
-    
-            console.log('DataMapper ' + evenHeat2 + " - " + model.heatNumber)
-    
-            setEventHeat(evenHeat2);
-        }
-
-        
-        if(model.DisplayMode === 'lane')
-        {
-            onLaneChange(1,model.jsonData);
-        }
-        
-
-    }, [model,eventHeat]);
-
-    */
 
     return (
         <div className="message-list">
             <BaseFrontendComponent
-                startdelayms={100}
+                startdelayms={model.startdelayms}
                 EventHeat={eventHeat}
                 lanes={lanes}
                 displayMode={displayMode}
