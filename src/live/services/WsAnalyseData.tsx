@@ -5,7 +5,7 @@ import DataMapper from './DataMapper';
 
 import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
-import { Grid, Stack } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 
 /*
  this.state = {
@@ -217,10 +217,16 @@ function WkAnalyseData({ socket }: { socket: any }) {
     // }, [socket, EventNumber, HeatNumber]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
+    var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
 
     return (
         <Grid container xs={12} >
-            <Grid item xs={12} display="flex" justifyContent={'flex-end'}> 
+            <Grid item xs={10} display="flex" justifyContent={'center'}>
+                <Typography variant="h6" component="div" gutterBottom align="center">
+                    {document_title}
+                </Typography>
+            </Grid>
+            <Grid item xs={2} display="flex" justifyContent={'flex-end'}>
                 {connect_status}
             </Grid>
             <Grid item xs={12}>

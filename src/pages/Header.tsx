@@ -1,9 +1,8 @@
-import { BottomNavigation, BottomNavigationAction, Grid, Typography } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import React from 'react';
 
 import LiveIcon from '@mui/icons-material/LiveTv';
 import ListIcon from '@mui/icons-material/ListOutlined';
-import HeatsIcon from '@mui/icons-material/Update';
 import Downloads from '@mui/icons-material/Download';
 
 
@@ -32,9 +31,7 @@ export default class Header extends React.Component<{}, HeaderState> {
 
     render() {
 
-        var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
-
-
+        
         console.log("path " + window.location.pathname + " - " + this.state.value)
         return (<div>
             <BottomNavigation
@@ -46,12 +43,6 @@ export default class Header extends React.Component<{}, HeaderState> {
                 <BottomNavigationAction href="/frontend/lists" label="List" value="/frontend/lists" icon={<ListIcon />} />
                 <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} />
             </BottomNavigation>
-            <Grid>
-                <Typography variant="h6" component="div" gutterBottom align="center">
-                    {document_title}
-                </Typography>
-
-            </Grid>
         </div>
         );
     }
