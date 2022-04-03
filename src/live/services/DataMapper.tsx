@@ -26,10 +26,9 @@ function DataMapper(model: {
     CompetitionName: string;
     jsonData: any;
     DisplayMode: string;
-    heatNumber: string;
-    eventNumber: string;
     startdelayms: number;
     runningtime: string;
+    eventheat: eventHeat;
 }) {
 
     const [eventHeat, setEventHeat] = useState<eventHeat>({ eventnr: '0', heatnr: '0', name: '' });
@@ -37,14 +36,13 @@ function DataMapper(model: {
     const [jsonData, setJsonData] = useState('')
     const [displayMode, setDisplayMode] = useState('')
 
-    if (model.heatNumber !== eventHeat.heatnr || model.eventNumber !== eventHeat.eventnr) {
-        let evenHeat2: eventHeat = {
-            name: model.CompetitionName,
-            heatnr: model.heatNumber,
-            eventnr: model.eventNumber
-        }
-        console.log('DataMapper new Heat: ' + model.heatNumber + ' WK: ' + model.eventNumber )
-        setEventHeat(evenHeat2);
+    if (model.eventheat.heatnr !== eventHeat.heatnr || model.eventheat.eventnr !== eventHeat.eventnr) {
+     
+        console.log('DataMapper old Heat: ' + eventHeat.heatnr + ' WK: ' + eventHeat.eventnr )
+        console.log('DataMapper new Heat: ' + model.eventheat.heatnr + ' WK: ' + model.eventheat.heatnr )
+
+        setEventHeat(model.eventheat);
+
     }
 
     if (model.DisplayMode !== displayMode) {

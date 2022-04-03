@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-// import getSwimStyles from '../utilities/getSwimStyles';
+import { eventHeat } from '../../shared/types/EventHeat';
+import getSwimStyles from '../utilities/getSwimStyles';
 import DataMapper from './DataMapper';
 
 /*
@@ -14,53 +15,43 @@ import DataMapper from './DataMapper';
 
 function WkAnalyseData({ socket }: { socket: any }) {
 
-    const [HeatNumber, setHeatNumber] = useState('0');
-    const [EventNumber, setEventNumber] = useState('0');
     const [DisplayMode, setDisplayMode] = useState('');
     const [CompetitionName, setCompetitionName] = useState('')
     const [JsonData, setJsonData] = useState('');
     const [startdelayms, setStartdelayms] = useState<number>(0);
     const [runningTime, setRunningTime] = useState('0');
+    const [eventheat, setEventHeat] = useState<eventHeat>({
+        eventnr: '0',
+        heatnr:'0',
+        name:'0',
+    });
 
     function setHeaderInfo(jsondata: any) {
 
-        if (jsondata.heat !== HeatNumber || jsondata.event !== EventNumber) {
+        if (jsondata.heat !== eventheat.heatnr || jsondata.event !== eventheat.eventnr) {
 
             setDisplayMode('startlist')
+            var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
+                ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
 
-            /*
+            setEventHeat(
+                {
+                    name: swimstyle,
+                    eventnr: jsondata.event,
+                    heatnr: jsondata.heat,
+                    competition: jsondata.competition,
+                    distance: jsondata.distance,
+                    gender: jsondata.gender,
+                    relaycount: jsondata.relaycount,
+                    round: jsondata.round,
+                    swimstyle: jsondata.swimstyle
+                })
 
-         var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
-             ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
-
-      
-       this.props.onEventHeatChange({
-         name: swimstyle,
-         eventnr: jsondata.event,
-         heatnr: jsondata.heat,
-         competition: jsondata.competition,
-         distance: jsondata.distance,
-         gender: jsondata.gender,
-         relaycount: jsondata.relaycount,
-         round: jsondata.round,
-         swimstyle: jsondata.swimstyle
-       })
-       */
-
-            setHeatNumber(jsondata.heat)
-            setEventNumber(jsondata.event)
             setJsonData(jsondata)
             setCompetitionName(jsondata.competition)
 
             console.log('WSAnaylseData ------> Heat' + jsondata.heat)
 
-            /*
-            this.setState({
-              EventNumber: jsondata.event,
-              HeatNumber: jsondata.heat,
-              CompetitionName: jsondata.competition
-            })
-            */
         } else {
             console.log("header no event or heat change ")
         }
@@ -206,7 +197,8 @@ function WkAnalyseData({ socket }: { socket: any }) {
             socket.off('message', messageListener);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [socket, EventNumber, HeatNumber]);
+    }, [socket,eventheat]);
+   // }, [socket, EventNumber, HeatNumber]);
 
 
     return (
@@ -215,10 +207,9 @@ function WkAnalyseData({ socket }: { socket: any }) {
                 CompetitionName={CompetitionName}
                 DisplayMode={DisplayMode}
                 jsonData={JsonData}
-                heatNumber={HeatNumber}
-                eventNumber={EventNumber}
                 startdelayms={startdelayms}
                 runningtime={runningTime}
+                eventheat={eventheat}
             />
         </div>
     );
