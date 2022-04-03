@@ -88,7 +88,6 @@ function DataMapper(model: {
     }
 
     return (
-        <div className="message-list">
             <BaseFrontendComponent
                 startdelayms={model.startdelayms}
                 EventHeat={eventHeat}
@@ -96,7 +95,6 @@ function DataMapper(model: {
                 displayMode={displayMode}
                 runningTime={'100'}
             />
-        </div>
     );
 }
 

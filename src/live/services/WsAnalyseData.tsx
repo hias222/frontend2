@@ -3,6 +3,10 @@ import { eventHeat } from '../../shared/types/EventHeat';
 import getSwimStyles from '../utilities/getSwimStyles';
 import DataMapper from './DataMapper';
 
+import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
+import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
+import { Grid, Stack } from '@mui/material';
+
 /*
  this.state = {
       WsConnected: false,
@@ -15,6 +19,7 @@ import DataMapper from './DataMapper';
 
 function WkAnalyseData({ socket }: { socket: any }) {
 
+    const [connectstate, setConnectstate] = useState<boolean>(false)
     const [DisplayMode, setDisplayMode] = useState('');
     const [CompetitionName, setCompetitionName] = useState('')
     const [JsonData, setJsonData] = useState('');
@@ -22,9 +27,11 @@ function WkAnalyseData({ socket }: { socket: any }) {
     const [runningTime, setRunningTime] = useState('0');
     const [eventheat, setEventHeat] = useState<eventHeat>({
         eventnr: '0',
-        heatnr:'0',
-        name:'0',
+        heatnr: '0',
+        name: '0',
     });
+
+
 
     function setHeaderInfo(jsondata: any) {
 
@@ -188,30 +195,46 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
         const messageListener = (message: any) => {
             var jsondata = JSON.parse(message)
+            if (!connectstate) setConnectstate(true)
             checkIncoming(jsondata)
         };
 
         socket.on('FromAPI', messageListener);
 
+        socket.on("disconnect", () => {
+            setConnectstate(false)
+        });
+
+        socket.on("connect", () => {
+            setConnectstate(true)
+        });
+
         return () => {
             socket.off('message', messageListener);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [socket,eventheat]);
-   // }, [socket, EventNumber, HeatNumber]);
+    }, [socket, eventheat]);
+    // }, [socket, EventNumber, HeatNumber]);
 
+    let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
 
     return (
-        <div className="message-list">
-            <DataMapper
-                CompetitionName={CompetitionName}
-                DisplayMode={DisplayMode}
-                jsonData={JsonData}
-                startdelayms={startdelayms}
-                runningtime={runningTime}
-                eventheat={eventheat}
-            />
-        </div>
+        <Grid container xs={12} >
+            <Grid item xs={12} display="flex" justifyContent={'flex-end'}> 
+                {connect_status}
+            </Grid>
+            <Grid item xs={12}>
+                <DataMapper
+                    CompetitionName={CompetitionName}
+                    DisplayMode={DisplayMode}
+                    jsonData={JsonData}
+                    startdelayms={startdelayms}
+                    runningtime={runningTime}
+                    eventheat={eventheat}
+                />
+            </Grid>
+        </Grid>
+
     );
 }
 

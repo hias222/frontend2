@@ -8,19 +8,21 @@ import WsConnect from './pages/WsConnect';
 import Resultlists from './pages/resultlists';
 import Heats from './pages/heats';
 import Downloads from './pages/downloads';
+import { Container } from '@mui/material';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/frontend">
-      <Header />
-      <Routes>
-        <Route path="/" element={<WsConnect />} />
-        <Route path="/live" element={<WsConnect />} />
-        <Route path="/lists" element={<Resultlists />} />
-        <Route path="/heats" element={<Heats />} />
-        <Route path="/downloads" element={<Downloads />} />
-      </Routes>
-
+      <Container maxWidth="md">
+        <Header />
+        <Routes>
+          <Route path="/" element={<WsConnect />} />
+          <Route path="/live" element={<WsConnect />} />
+          <Route path="/lists" element={<Resultlists />} />
+          <Route path="/heats" element={<Heats />} />
+          <Route path="/downloads" element={<Downloads />} />
+        </Routes>
+      </Container>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
