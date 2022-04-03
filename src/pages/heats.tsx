@@ -1,21 +1,23 @@
-import React from 'react';
+//import React from 'react';
 import { BaseHeatsComponent } from '../heats/BaseHeatsComponent';
 import { Container } from '@mui/material';
-import { ResultInterface } from '../heats/interfaces/ResultInterface';
+//import { ResultInterface } from '../heats/interfaces/ResultInterface';
 
 export type HeatsState = {
     isLoading: boolean;
 };
 
-export default class heats extends React.Component<ResultInterface, HeatsState> {
+// this.props.id
 
-    render() {
-        return (
-            <Container maxWidth="md">
-                <BaseHeatsComponent
-                    id={this.props.id}
-                />
-            </Container>
-        )
-    }
+function Heats() {
+    return (
+        <Container maxWidth="md">
+            <BaseHeatsComponent
+                id={'1'}
+            />
+        </Container>
+    )
+
 }
+
+export default Heats;

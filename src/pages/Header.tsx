@@ -4,6 +4,7 @@ import React from 'react';
 import LiveIcon from '@mui/icons-material/LiveTv';
 import ListIcon from '@mui/icons-material/ListOutlined';
 import HeatsIcon from '@mui/icons-material/Update';
+import Downloads from '@mui/icons-material/Download';
 
 
 export type HeaderState = {
@@ -14,8 +15,16 @@ export default class Header extends React.Component<{}, HeaderState> {
 
     constructor(props: {}) {
         super(props);
-        this.state = {
-            value: window.location.pathname
+
+        if (window.location.pathname !== '/frontend/') {
+            this.state = {
+                value: window.location.pathname
+            }
+        } else {
+            // the first
+            this.state = {
+                value: '/frontend/live'
+            }
         }
     }
 
@@ -24,11 +33,12 @@ export default class Header extends React.Component<{}, HeaderState> {
         return (
             <BottomNavigation
                 value={this.state.value}
-                //showLabels
+            //showLabels
             >
                 <BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />
-                <BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} />
+                {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
                 <BottomNavigationAction href="/frontend/lists" label="List" value="/frontend/lists" icon={<ListIcon />} />
+                <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} />
             </BottomNavigation>
         );
     }
