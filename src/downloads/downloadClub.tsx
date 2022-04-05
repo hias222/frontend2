@@ -18,14 +18,11 @@ function DownloadClub(model: { clubData: [club]; }) {
                 model.clubData.map((club, index) => (
                     <Card sx={{ minWidth: 275 }} key={index}>
                         <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            <Typography sx={{ mb: 1.5 }} color="text.secondary" gutterBottom>
                                 {club.name}
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                            <Typography sx={{ mb: 1.3 }} color="text.secondary">
                                 {club.code}
-                            </Typography>
-                            <Typography variant="body2">
-                                Downloads
                             </Typography>
                         </CardContent>
                         <CardActions>

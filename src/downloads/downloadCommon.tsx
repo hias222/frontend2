@@ -19,11 +19,8 @@ function DownloadCommon(model: { commonData: [common]; }) {
                 model.commonData.map((commonTag, index) => (
                     <Card sx={{ minWidth: 275 }} key={index}>
                         <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            <Typography sx={{ mb: 1.5 }} color="text.secondary" gutterBottom>
                                 {commonTag.name}
-                            </Typography>
-                            <Typography variant="body2">
-                                Downloads
                             </Typography>
                         </CardContent>
                         <CardActions>
