@@ -1,17 +1,18 @@
 import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
-type club = {
-    name: string;
-    code: string;
-    nation?: string;
-    region?: string;
-    entriesfile?: string;
-    certsfile?: string;
-}
+import DownloadClub from "./downloadClub";
+import DownloadCommon from "./downloadCommon";
+import { downloadData } from "./downloadsType";
+
 
 function DownloadCards() {
 
-    const [clubData, setClubData] = useState<[club]>([{ 'name': '', 'code': '' }]);
+    var emptyData: downloadData = {
+        common: [{ name: '' }],
+        clubs: [{ 'name': '', 'code': '' }]
+    }
+
+    const [clubData, setClubData] = useState<downloadData>(emptyData);
 
     //getDownloadData()
     useEffect(() => {
@@ -24,7 +25,7 @@ function DownloadCards() {
                 .then((data) => data.text())
                 .then(text => JSON.parse(text))
                 .then(json => {
-                    if (clubData.length !== json.length) setClubData(json)
+                    if (clubData.clubs.length !== json.clubs.length) setClubData(json)
                     console.log(clubData)
                 })
                 .catch(error => console.log(error))
@@ -35,36 +36,21 @@ function DownloadCards() {
         //return ( ) => setClubData('') ;
     }, [clubData]);
 
-    function getDownloadButton(downloadLink: string | undefined, linkText: string){
-
-        if (downloadLink === undefined) return <Button size="small" disabled={true}>{linkText}</Button>
-
-        return <Button size="small" href={downloadLink} >Meldungen</Button>
-    }
-
     return (
-        <Grid container spacing={1}>
-            {
-                clubData.map((club, index) => (
-                    <Card sx={{ minWidth: 275 }} key={index}>
-                        <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                {club.name}
-                            </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                {club.code}
-                            </Typography>
-                            <Typography variant="body2">
-                                Downloads
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            {getDownloadButton(club.entriesfile, 'Meldungen')}
-                            {getDownloadButton(club.certsfile, 'Urkunden')}
-                        </CardActions>
-                    </Card>
-                ))
-            }
+        <Grid container>
+            <Grid item xs={12}>
+                <Typography  sx={{ mb: 1.5 }} color="text.primary" gutterBottom >Allgemein</Typography>
+            </Grid>
+            <Grid>
+                <DownloadCommon commonData={clubData.common}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <Typography sx={{ mb: 1.5 }} color="text.primary" gutterBottom>Vereine</Typography>
+            </Grid>
+            <Grid>
+                <DownloadClub clubData={clubData.clubs} />
+            </Grid>
         </Grid>
     )
 
