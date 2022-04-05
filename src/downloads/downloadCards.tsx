@@ -35,6 +35,13 @@ function DownloadCards() {
         //return ( ) => setClubData('') ;
     }, [clubData]);
 
+    function getDownloadButton(downloadLink: string | undefined, linkText: string){
+
+        if (downloadLink === undefined) return <Button size="small" disabled={true}>{linkText}</Button>
+
+        return <Button size="small" href={downloadLink} >Meldungen</Button>
+    }
+
     return (
         <Grid container spacing={1}>
             {
@@ -52,8 +59,8 @@ function DownloadCards() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="small" href={club.entriesfile}>Meldungen</Button>
-                            <Button size="small" href={club.certsfile}>Urkunden</Button>
+                            {getDownloadButton(club.entriesfile, 'Meldungen')}
+                            {getDownloadButton(club.certsfile, 'Urkunden')}
                         </CardActions>
                     </Card>
                 ))
