@@ -1,9 +1,9 @@
+import DownloadCards from "../downloads/downloadCards"
+
 function Downloads() {
 
     return (
-        <div>
-            Downloads
-        </div>
+        <DownloadCards />
     );
 
 }
