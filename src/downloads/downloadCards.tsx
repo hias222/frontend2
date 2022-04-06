@@ -1,8 +1,9 @@
-import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react"
+import { Grid, IconButton, InputBase, Typography } from "@mui/material";
+import { useEffect, useRef, useState } from "react"
 import DownloadClub from "./downloadClub";
 import DownloadCommon from "./downloadCommon";
-import { downloadData } from "./downloadsType";
+import { common, club, downloadData } from "./downloadsType";
+import SearchIcon from '@mui/icons-material/Search'
 
 
 function DownloadCards() {
@@ -12,7 +13,26 @@ function DownloadCards() {
         clubs: [{ 'name': '', 'code': '' }]
     }
 
-    const [clubData, setClubData] = useState<downloadData>(emptyData);
+    const [downloadData, setDownloadData] = useState<downloadData>(emptyData);
+    const [clubData, setClubs] = useState<[club]>([{ name: '', code: '0' }]);
+    const [common, setCommon] = useState<[common]>([{ name: '' }])
+
+    const [value, setValue] = useState('');
+
+    const prevCountRef = useRef('');
+    const prevClubDataRef = useRef<[club]>([{ name: '', code: '0' }]);
+    const prevCommonRef = useRef<[common]>([{ name: '' }])
+
+
+    function filterValuePart(arr: any, part: any) {
+        part = part.toLowerCase();
+        return arr.filter(function (obj: any) {
+            return Object.keys(obj)
+                .some(function (k) {
+                    return obj[k].toLowerCase().indexOf(part) !== -1;
+                });
+        });
+    }
 
     //getDownloadData()
     useEffect(() => {
@@ -20,36 +40,78 @@ function DownloadCards() {
         var download_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/frontend/downloads.json"
 
         function getDownloadData() {
+
+            console.log('loading Data from ' + download_url)
+
             fetch(download_url)
                 .then((result) => result.blob())
                 .then((data) => data.text())
                 .then(text => JSON.parse(text))
                 .then(json => {
-                    if (clubData.clubs.length !== json.clubs.length) setClubData(json)
-                    console.log(clubData)
+                    if (downloadData.clubs.length !== json.clubs.length) setDownloadData(json)
+                    if (downloadData.clubs.length !== json.clubs.length) {
+                        setClubs(json.clubs)
+                        prevClubDataRef.current = json.clubs
+                    }
+                    if (downloadData.common.length !== json.common.length) {
+                        prevCommonRef.current = json.common
+                        setCommon(json.common)
+                    }
                 })
                 .catch(error => console.log(error))
         }
 
-        getDownloadData()
+        if (prevCountRef.current === value) getDownloadData()
 
-        //return ( ) => setClubData('') ;
-    }, [clubData]);
+        if (prevCountRef.current !== value) {
+            var f_club = filterValuePart(prevClubDataRef.current, value);
+            var f_common = filterValuePart(prevCommonRef.current, value);
+
+            setClubs(f_club)
+            setCommon(f_common)
+        }
+
+        prevCountRef.current = value;
+
+        //return ( ) => setDownloadData('') ;
+    }, [value, downloadData]);
+
+    function handleSubmit(e: any) {
+        setValue(e.target.value)
+        console.log(e.target.value)
+    }
+
+    function handleClickSearch() {
+        setDownloadData(emptyData)
+        console.log('Refresh - ' + value);
+    }
 
     return (
         <Grid container>
+            <Grid>
+                <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search Downloads"
+                    inputProps={{ 'aria-label': 'search' }}
+                    onChange={handleSubmit}
+                    value={value}
+                />
+                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={handleClickSearch}>
+                    <SearchIcon />
+                </IconButton>
+            </Grid>
             <Grid item xs={12}>
-                <Typography  sx={{ mb: 1.5 }} color="text.primary" gutterBottom >Allgemein</Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.primary" gutterBottom >Allgemein</Typography>
             </Grid>
             <Grid>
-                <DownloadCommon commonData={clubData.common}
+                <DownloadCommon commonData={common}
                 />
             </Grid>
             <Grid item xs={12}>
                 <Typography sx={{ mb: 1.5 }} color="text.primary" gutterBottom>Vereine</Typography>
             </Grid>
             <Grid>
-                <DownloadClub clubData={clubData.clubs} />
+                <DownloadClub clubData={clubData} />
             </Grid>
         </Grid>
     )

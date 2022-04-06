@@ -7,7 +7,7 @@ function DownloadCommon(model: { commonData: [common]; }) {
     function getDownloadButton(downloadLink: string | undefined, linkText: string) {
 
         if (downloadLink === undefined) return <Button size="small" disabled={true}>{linkText}</Button>
-        console.log(downloadLink)
+        //console.log(downloadLink)
 
         return <Button size="small" href={downloadLink} >{linkText}</Button>
     }
