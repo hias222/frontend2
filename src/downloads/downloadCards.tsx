@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import DownloadClub from "./downloadClub";
 import DownloadCommon from "./downloadCommon";
 import { common, club, downloadData } from "./downloadsType";
-import SearchIcon from '@mui/icons-material/Search'
+import SearchIcon from '@mui/icons-material/Clear'
 
 
 function DownloadCards() {
