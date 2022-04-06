@@ -87,9 +87,18 @@ function DownloadCards() {
         //console.log('Refresh - ' + value);
     }
 
+    var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
+
+
     return (
-        <Grid container>
-            <Grid>
+        <Grid container spacing={{ xs: 1, md: 2 }}>
+            <Grid item xs={12} display="flex" justifyContent={'center'}>
+                <Typography variant="h6" component="div" gutterBottom align="center">
+                    {document_title}
+                </Typography>
+            </Grid>
+            <Grid item xs={3} display="flex"></Grid>
+            <Grid item xs={6} display="flex" justifyContent={'center'}>
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search Downloads"
@@ -101,17 +110,18 @@ function DownloadCards() {
                     <SearchIcon />
                 </IconButton>
             </Grid>
+            <Grid item xs={3} display="flex"></Grid>
             <Grid item xs={12}>
                 <Typography sx={{ mb: 1.5 }} color="text.primary" gutterBottom >Allgemein</Typography>
             </Grid>
-            <Grid>
+            <Grid item>
                 <DownloadCommon commonData={common}
                 />
             </Grid>
             <Grid item xs={12}>
                 <Typography sx={{ mb: 1.5 }} color="text.primary" gutterBottom>Vereine</Typography>
             </Grid>
-            <Grid>
+            <Grid item>
                 <DownloadClub clubData={clubData} />
             </Grid>
         </Grid>

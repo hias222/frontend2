@@ -14,19 +14,21 @@ function DownloadCommon(model: { commonData: [common]; }) {
 
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={{ xs: 2, md: 3 }} >
             {
                 model.commonData.map((commonTag, index) => (
-                    <Card sx={{ minWidth: 275 }} key={index}>
-                        <CardContent>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary" gutterBottom>
-                                {commonTag.name}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            {getDownloadButton(commonTag.link, 'Download')}
-                        </CardActions>
-                    </Card>
+                    <Grid item>
+                        <Card sx={{ minWidth: 275, boxShadow:3}} key={index}>
+                            <CardContent>
+                                <Typography sx={{ mb: 1.5 }} color="text.secondary" gutterBottom>
+                                    {commonTag.name}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                {getDownloadButton(commonTag.link, 'Download')}
+                            </CardActions>
+                        </Card>
+                    </Grid>
                 ))
             }
         </Grid>
@@ -36,7 +38,3 @@ function DownloadCommon(model: { commonData: [common]; }) {
 
 
 export default DownloadCommon;
-
-function commonData(commonData: any) {
-    throw new Error("Function not implemented.");
-}

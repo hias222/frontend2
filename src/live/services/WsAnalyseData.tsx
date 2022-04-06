@@ -5,7 +5,7 @@ import DataMapper from './DataMapper';
 
 import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 /*
  this.state = {
@@ -219,17 +219,9 @@ function WkAnalyseData({ socket }: { socket: any }) {
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
     var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
 
-    return (
-        <Grid container xs={12} >
-            <Grid item xs={10} display="flex" justifyContent={'center'}>
-                <Typography variant="h6" component="div" gutterBottom align="center">
-                    {document_title}
-                </Typography>
-            </Grid>
-            <Grid item xs={2} display="flex" justifyContent={'flex-end'}>
-                {connect_status}
-            </Grid>
-            <Grid item xs={12}>
+    function getDataMapper() {
+        if (connectstate) {
+            return (<Grid item xs={12}>
                 <DataMapper
                     CompetitionName={CompetitionName}
                     DisplayMode={DisplayMode}
@@ -238,7 +230,27 @@ function WkAnalyseData({ socket }: { socket: any }) {
                     runningtime={runningTime}
                     eventheat={eventheat}
                 />
+            </Grid>)
+        } else {
+            return (<Grid item xs={12} display="flex" justifyContent={'center'}>
+                <Typography variant="h6" component="div" gutterBottom align="center">
+                    Kein aktiver Wettkampf
+                </Typography>
+            </Grid>)
+        }
+    }
+
+    return (
+        <Grid container>
+            <Grid item xs={10} display="flex" justifyContent={'center'}>
+                <Typography variant="h6" component="div" gutterBottom align="center">
+                    {document_title}
+                </Typography>
             </Grid>
+            <Grid item xs={2} display="flex" justifyContent={'flex-end'}>
+                {connect_status}
+            </Grid>
+            {getDataMapper()}
         </Grid>
 
     );

@@ -22,7 +22,7 @@ export default class Header extends React.Component<{}, HeaderState> {
         } else {
             // the first
             this.state = {
-                value: '/frontend/live'
+                value: '/frontend/lists'
             }
         }
     }
@@ -38,9 +38,9 @@ export default class Header extends React.Component<{}, HeaderState> {
                 value={this.state.value}
             //showLabels
             >
+                <BottomNavigationAction href="/frontend/lists" label="List" value="/frontend/lists" icon={<ListIcon />} />
                 <BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />
                 {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
-                <BottomNavigationAction href="/frontend/lists" label="List" value="/frontend/lists" icon={<ListIcon />} />
                 <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} />
             </BottomNavigation>
         </div>

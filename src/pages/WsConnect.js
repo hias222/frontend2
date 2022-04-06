@@ -27,7 +27,7 @@ function WsConnect() {
     console.log('backend_url: ' + backend_url + ' (REACT_APP_BACKEND_URL when false)')
   }
 
-
+/*
   function sayHello() {
     console.log(socket)
     printEnvironment()
@@ -42,6 +42,7 @@ function WsConnect() {
     socket.disconnect()
     console.log('disconnect')
   }
+  */
 
   const [socket, setSocket] = useState(null);
 
@@ -63,6 +64,7 @@ function WsConnect() {
 
     setSocket(newSocket);
     return () => newSocket.close();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSocket]);
 
   return (
@@ -74,9 +76,11 @@ function WsConnect() {
       ) : (
         <div>Not Connected</div>
       )}
+      {/*
       <button onClick={sayHello}>Log</button>
       <button onClick={connectWS}>Connect</button>
       <button onClick={disconnectWS}>DISConnect</button>
+      */}
     </div>
   );
 }
