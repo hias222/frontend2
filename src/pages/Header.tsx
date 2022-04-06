@@ -15,14 +15,15 @@ export default class Header extends React.Component<{}, HeaderState> {
     constructor(props: {}) {
         super(props);
 
-        if (window.location.pathname !== '/frontend/') {
+        if (window.location.pathname === '/frontend/' || window.location.pathname === '/frontend') {
             this.state = {
-                value: window.location.pathname
+                value: '/frontend/lists'
             }
+
         } else {
             // the first
             this.state = {
-                value: '/frontend/lists'
+                value: window.location.pathname
             }
         }
     }
@@ -31,7 +32,7 @@ export default class Header extends React.Component<{}, HeaderState> {
 
     render() {
 
-        
+
         console.log("path " + window.location.pathname + " - " + this.state.value)
         return (<div>
             <BottomNavigation

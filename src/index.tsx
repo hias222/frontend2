@@ -16,7 +16,7 @@ ReactDOM.render(
       <Container maxWidth="md">
         <Header />
         <Routes>
-          <Route path="/" element={<WsConnect />} />
+          <Route path="/" element={<Resultlists />} />
           <Route path="/live" element={<WsConnect />} />
           <Route path="/lists" element={<Resultlists />} />
           <Route path="/heats" element={<Heats />} />
