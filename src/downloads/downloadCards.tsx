@@ -78,12 +78,13 @@ function DownloadCards() {
 
     function handleSubmit(e: any) {
         setValue(e.target.value)
-        console.log(e.target.value)
+        //console.log(e.target.value)
     }
 
     function handleClickSearch() {
         setDownloadData(emptyData)
-        console.log('Refresh - ' + value);
+        setValue('')
+        //console.log('Refresh - ' + value);
     }
 
     return (
