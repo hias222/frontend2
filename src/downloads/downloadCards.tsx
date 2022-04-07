@@ -29,7 +29,8 @@ function DownloadCards() {
         return arr.filter(function (obj: any) {
             return Object.keys(obj)
                 .some(function (k) {
-                    return obj[k].toLowerCase().indexOf(part) !== -1;
+                    var filterelement = obj[k].toLowerCase().indexOf(part) !== -1 && obj[k].toLowerCase().indexOf(part) !== null;
+                    return  filterelement
                 });
         });
     }
