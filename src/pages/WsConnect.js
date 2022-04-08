@@ -59,20 +59,23 @@ function WsConnect() {
 
     newSocket.on('disconnect', () => {
       console.log('WsSocketState: disconnected ' + backend_url + context_path);
-      //setSocket();
+      //setSocket()
     });
 
     newSocket.io.on('error', (error) => {
       console.log("WsSocketState: error socket-io " + backend_url + context_path);
       console.log(error)
-      setSocket();
+      //setSocket()
     });
 
-    setSocket(newSocket);
-    return () => newSocket.close();
+    //setSocket(newSocket);
+    return () => {
+      newSocket.close()
+      setSocket()
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   //setSocket
-  }, [setSocket]);
+  }, []);
 
   return (
     <div>
