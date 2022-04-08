@@ -31,8 +31,6 @@ function WkAnalyseData({ socket }: { socket: any }) {
         name: '0',
     });
 
-
-
     function setHeaderInfo(jsondata: any) {
 
         if (jsondata.heat !== eventheat.heatnr || jsondata.event !== eventheat.eventnr) {
@@ -162,7 +160,7 @@ function WkAnalyseData({ socket }: { socket: any }) {
             }
             case "time": {
                 setRunningTimeString(jsondata)
-                console.log('time')
+                console.log('running - time ' + jsondata.value)
                 break;
             }
             case "message": {
@@ -193,7 +191,13 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
     useEffect(() => {
 
+        const messageEnd = (message: any ) => {
+            console.log('off')
+        }
+
         const messageListener = (message: any) => {
+            //console.log(message)
+            //console.log(socket)
             var jsondata = JSON.parse(message)
             if (!connectstate) setConnectstate(true)
             checkIncoming(jsondata)
@@ -210,10 +214,10 @@ function WkAnalyseData({ socket }: { socket: any }) {
         });
 
         return () => {
-            socket.off('message', messageListener);
+            socket.off('message', messageEnd);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [socket, eventheat]);
+    }, [socket]);
     // }, [socket, EventNumber, HeatNumber]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
