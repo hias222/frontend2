@@ -71,7 +71,6 @@ function WsConnect() {
     //setSocket(newSocket);
     return () => {
       newSocket.close()
-      setSocket()
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   //setSocket

@@ -191,11 +191,6 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
     useEffect(() => {
 
-        const messageEnd = (message: any) => {
-            console.log('off')
-            setConnectstate(false)
-        }
-
         const messageListener = (message: any) => {
             //console.log(message)
             //console.log(socket)
@@ -207,7 +202,7 @@ function WkAnalyseData({ socket }: { socket: any }) {
         socket.on('FromAPI', messageListener);
 
         return () => {
-            socket.off('message', messageEnd);
+            socket.close();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
