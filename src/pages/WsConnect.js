@@ -27,7 +27,6 @@ function WsConnect() {
     console.log('backend_url: ' + backend_url + ' (REACT_APP_BACKEND_URL when false)')
   }
 
-/*
   function sayHello() {
     console.log(socket)
     printEnvironment()
@@ -42,7 +41,7 @@ function WsConnect() {
     socket.disconnect()
     console.log('disconnect')
   }
-  */
+  
 
   const [socket, setSocket] = useState(null);
 
@@ -55,16 +54,24 @@ function WsConnect() {
 
     newSocket.on('connect', () => {
       console.log('WsSocketState: connected ' + backend_url + context_path);
+      setSocket(newSocket);
+    });
+
+    newSocket.on('disconnect', () => {
+      console.log('WsSocketState: disconnected ' + backend_url + context_path);
+      //setSocket();
     });
 
     newSocket.io.on('error', (error) => {
       console.log("WsSocketState: error socket-io " + backend_url + context_path);
       console.log(error)
+      setSocket();
     });
 
     setSocket(newSocket);
     return () => newSocket.close();
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //setSocket
   }, [setSocket]);
 
   return (

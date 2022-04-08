@@ -206,22 +206,6 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
         socket.on('FromAPI', messageListener);
 
-        socket.io.on("reconnect", () => {
-            console.log('reconect')
-            setConnectstate(false)
-        });
-
-        /*
-        socket.on("disconnect", () => {
-            setConnectstate(false)
-        });
-
-        
-        socket.on("connect", () => {
-            setConnectstate(true)
-        });
-        */
-
         return () => {
             socket.off('message', messageEnd);
         };
