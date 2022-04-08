@@ -191,8 +191,9 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
     useEffect(() => {
 
-        const messageEnd = (message: any ) => {
+        const messageEnd = (message: any) => {
             console.log('off')
+            setConnectstate(false)
         }
 
         const messageListener = (message: any) => {
@@ -205,19 +206,27 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
         socket.on('FromAPI', messageListener);
 
+        socket.io.on("reconnect", () => {
+            console.log('reconect')
+            setConnectstate(false)
+        });
+
+        /*
         socket.on("disconnect", () => {
             setConnectstate(false)
         });
 
+        
         socket.on("connect", () => {
             setConnectstate(true)
         });
+        */
 
         return () => {
             socket.off('message', messageEnd);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [socket]);
+    }, []);
     // }, [socket, EventNumber, HeatNumber]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
