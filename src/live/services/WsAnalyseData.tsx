@@ -237,11 +237,20 @@ function WkAnalyseData({ socket }: { socket: any }) {
                 />
             </Grid>)
         } else {
-            return (<Grid item xs={12} display="flex" justifyContent={'center'}>
-                <Typography variant="h6" component="div" gutterBottom align="center">
-                    Keine Verbindung zur Zeitnahme
-                </Typography>
-            </Grid>)
+            return (
+                <div>
+                    <Typography variant="h6" component="div" gutterBottom align="center">
+                        Keine Verbindung zur Zeitnahme
+                    </Typography>
+                    <DataMapper
+                        CompetitionName={CompetitionName}
+                        DisplayMode={DisplayMode}
+                        jsonData={JsonData}
+                        startdelayms={startdelayms}
+                        runningtime={runningTime}
+                        eventheat={eventheat}
+                    />
+                </div>)
         }
     }
 

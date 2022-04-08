@@ -87,7 +87,7 @@ function WsConnect() {
       ) : (
         <Grid item xs={12} display="flex" justifyContent={'center'}>
           <Typography variant="h6" component="div" gutterBottom align="center">
-           Verbindung abgebrochen - bitte Webseite neu laden
+           Keine aktiver Wettkampf vorhanden
           </Typography>
         </Grid>
       )}
