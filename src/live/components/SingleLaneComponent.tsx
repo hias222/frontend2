@@ -6,10 +6,10 @@ import { LaneState } from "../../shared/state/LaneState";
 
 import checkUndefined from "../utilities/checkUndefined";
 import getBirthYear from "../utilities/getBirthYear";
-import stringToBoolean from "../utilities/stringToBoolean";
 import StyledLane from "./images/StyledLane";
 import LapStyledLane from "./images/LapStyledLane";
 import FinishStyledLane from "../../shared/components/images/FinishStyledLane";
+import stringToBoolean from "../../shared/utilities/stringToBoolean";
 
 export class SingleLaneComponent extends React.Component<LaneInterface, LaneState>{
 
