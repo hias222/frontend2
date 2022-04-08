@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client'
+import { Grid, Typography } from '@mui/material';
 import WkAnalyseData from '../live/services/WsAnalyseData';
 
 import '../styles/App.scss';
@@ -41,7 +42,7 @@ function WsConnect() {
     socket.disconnect()
     console.log('disconnect')
   }
-  
+
 
   const [socket, setSocket] = useState(null);
 
@@ -73,8 +74,8 @@ function WsConnect() {
       newSocket.close()
       setSocket()
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  //setSocket
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //setSocket
   }, []);
 
   return (
@@ -84,7 +85,11 @@ function WsConnect() {
           <WkAnalyseData socket={socket} />
         </div>
       ) : (
-        <div>Not Connected</div>
+        <Grid item xs={12} display="flex" justifyContent={'center'}>
+          <Typography variant="h6" component="div" gutterBottom align="center">
+           Verbindung abgebrochen - bitte Webseite neu laden
+          </Typography>
+        </Grid>
       )}
       {/*
       <button onClick={sayHello}>Log</button>

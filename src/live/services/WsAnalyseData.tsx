@@ -199,10 +199,20 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
         socket.on('FromAPI', messageListener);
 
-        socket.on('disconnect', (reason:any) => {
+        socket.on('disconnect', (reason: any) => {
             console.log(reason)
             setConnectstate(false)
         });
+
+        socket.on('connect', () => {
+            setConnectstate(true)
+        });
+
+        if (!connectstate) {
+            if (socket.connected) setConnectstate(true)
+        } else {
+            if (!socket.connected) setConnectstate(false)
+        }
 
         return () => {
             setConnectstate(false)
@@ -229,7 +239,7 @@ function WkAnalyseData({ socket }: { socket: any }) {
         } else {
             return (<Grid item xs={12} display="flex" justifyContent={'center'}>
                 <Typography variant="h6" component="div" gutterBottom align="center">
-                    Kein aktiver Wettkampf
+                    Keine Verbindung zur Zeitnahme
                 </Typography>
             </Grid>)
         }
