@@ -15,7 +15,7 @@ function DownloadClub(model: { clubData: [club]; }) {
         <Grid container spacing={{ xs: 2, md: 3 }} >
             {
                 model.clubData.map((club, index) => (
-                    <Grid item>
+                    <Grid item key={'500' + index}>
                         <Card sx={{ minWidth: 275, boxShadow: 3 }} key={index}>
                             <CardContent>
                                 <Typography sx={{ mb: 1.5 }} color="text.primary" gutterBottom>

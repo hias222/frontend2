@@ -17,7 +17,7 @@ function DownloadCommon(model: { commonData: [common]; }) {
         <Grid container spacing={{ xs: 2, md: 3 }} >
             {
                 model.commonData.map((commonTag, index) => (
-                    <Grid item>
+                    <Grid item key={'100' + index}>
                         <Card sx={{ minWidth: 275, boxShadow:3}} key={index}>
                             <CardContent>
                                 <Typography sx={{ mb: 1.5 }} color="text.secondary" gutterBottom>

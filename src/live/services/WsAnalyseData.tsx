@@ -192,8 +192,6 @@ function WkAnalyseData({ socket }: { socket: any }) {
     useEffect(() => {
 
         const messageListener = (message: any) => {
-            //console.log(message)
-            //console.log(socket)
             var jsondata = JSON.parse(message)
             if (!connectstate) setConnectstate(true)
             checkIncoming(jsondata)
@@ -201,12 +199,17 @@ function WkAnalyseData({ socket }: { socket: any }) {
 
         socket.on('FromAPI', messageListener);
 
+        socket.on('disconnect', (reason:any) => {
+            console.log(reason)
+            setConnectstate(false)
+        });
+
         return () => {
+            setConnectstate(false)
             socket.close();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    // }, [socket, EventNumber, HeatNumber]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
     var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
