@@ -53,6 +53,13 @@ function WsConnect() {
       path: context_path
     });
 
+    const messageListener = (message) => {
+      var jsondata = JSON.parse(message)
+      console.log(jsondata.type)
+    };
+
+    socket.on('FromAPI', messageListener);
+
     newSocket.on('connect', () => {
       console.log('WsSocketState: connected ' + backend_url + context_path);
       setSocket(newSocket);
@@ -75,7 +82,6 @@ function WsConnect() {
       setSocket()
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    //setSocket
   }, []);
 
   return (
@@ -87,7 +93,7 @@ function WsConnect() {
       ) : (
         <Grid item xs={12} display="flex" justifyContent={'center'}>
           <Typography variant="h6" component="div" gutterBottom align="center">
-           Keine aktiver Wettkampf vorhanden
+            Keine aktiver Wettkampf vorhanden
           </Typography>
         </Grid>
       )}
