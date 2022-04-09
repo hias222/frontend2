@@ -29,22 +29,19 @@ function WsConnect() {
   }
 
   function sayHello() {
-    console.log(socket)
     printEnvironment()
   }
 
   function connectWS() {
-    socket.connect()
     console.log('connect')
   }
 
   function disconnectWS() {
-    socket.disconnect()
     console.log('disconnect')
   }
 
-
-  const [socket, setSocket] = useState(null);
+  const [message, setMessage] = useState('');
+  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
 
@@ -53,50 +50,44 @@ function WsConnect() {
       path: context_path
     });
 
-    const messageListener = (message) => {
-      var jsondata = JSON.parse(message)
-      console.log(jsondata.type)
+    const messageListener = (newmessage) => {
+      var jsondata = JSON.parse(newmessage)
+      setMessage(jsondata)
     };
 
     newSocket.on('FromAPI', messageListener);
 
     newSocket.on('connect', () => {
+      setConnected(true)
       console.log('WsSocketState: connected ' + backend_url + context_path);
-      setSocket(newSocket);
     });
 
     newSocket.on('disconnect', () => {
+      setConnected(false)
       console.log('WsSocketState: disconnected ' + backend_url + context_path);
-      //setSocket()
     });
 
     newSocket.io.on('error', (error) => {
+      setConnected(false)
       console.log("WsSocketState: error socket-io " + backend_url + context_path);
       console.log(error)
-      //setSocket()
     });
 
-    //setSocket(newSocket);
+
     return () => {
       newSocket.close()
-      setSocket()
+      setConnected(false)
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
-      {socket ? (
-        <div className="chat-container">
-          <WkAnalyseData socket={socket} />
-        </div>
-      ) : (
-        <Grid item xs={12} display="flex" justifyContent={'center'}>
-          <Typography variant="h6" component="div" gutterBottom align="center">
-            Keine aktiver Wettkampf vorhanden
-          </Typography>
-        </Grid>
-      )}
+
+      <div className="chat-container">
+        <WkAnalyseData message={message} connected={connected} />
+      </div>
+
       {/*
       <button onClick={sayHello}>Log</button>
       <button onClick={connectWS}>Connect</button>

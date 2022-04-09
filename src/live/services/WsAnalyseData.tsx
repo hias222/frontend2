@@ -6,6 +6,7 @@ import DataMapper from './DataMapper';
 import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
 import { Grid, Typography } from '@mui/material';
+import { connected } from 'process';
 
 /*
  this.state = {
@@ -17,7 +18,7 @@ import { Grid, Typography } from '@mui/material';
     }
     */
 
-function WkAnalyseData({ socket }: { socket: any }) {
+function WkAnalyseData( model : { message: string, connected: boolean }) {
 
     const [connectstate, setConnectstate] = useState<boolean>(false)
     const [DisplayMode, setDisplayMode] = useState('');
@@ -184,42 +185,27 @@ function WkAnalyseData({ socket }: { socket: any }) {
             }
             default: {
                 console.log('default')
+                console.log(jsondata.type)
+                console.log(jsondata)
             }
         }
     }
 
-
     useEffect(() => {
 
+        setConnectstate(model.connected)
+
         const messageListener = (message: any) => {
-            var jsondata = JSON.parse(message)
-            if (!connectstate) setConnectstate(true)
-            checkIncoming(jsondata)
+            //var jsondata = JSON.parse(message)
+            //if (!connectstate) setConnectstate(true)
+            checkIncoming(message)
         };
-
-        socket.on('FromAPI', messageListener);
-
-        socket.on('disconnect', (reason: any) => {
-            console.log(reason)
-            setConnectstate(false)
-        });
-
-        socket.on('connect', () => {
-            setConnectstate(true)
-        });
-
-        if (!connectstate) {
-            if (socket.connected) setConnectstate(true)
-        } else {
-            if (!socket.connected) setConnectstate(false)
-        }
+        messageListener(model.message);
 
         return () => {
-            setConnectstate(false)
-            socket.close();
+            console.log('finish WSanalyse')
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [model.message, model.connected]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
     var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
