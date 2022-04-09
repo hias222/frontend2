@@ -6,7 +6,6 @@ import DataMapper from './DataMapper';
 import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
 import { Grid, Typography } from '@mui/material';
-import { connected } from 'process';
 
 /*
  this.state = {
@@ -18,7 +17,7 @@ import { connected } from 'process';
     }
     */
 
-function WkAnalyseData( model : { message: string, connected: boolean }) {
+function WkAnalyseData(model: { message: string, connected: boolean }) {
 
     const [connectstate, setConnectstate] = useState<boolean>(false)
     const [DisplayMode, setDisplayMode] = useState('');
@@ -201,10 +200,12 @@ function WkAnalyseData( model : { message: string, connected: boolean }) {
             checkIncoming(message)
         };
         messageListener(model.message);
-
-        return () => {
-            console.log('finish WSanalyse')
-        };
+        /*
+                return () => {
+                    console.log('finish WSanalyse')
+                };
+                */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [model.message, model.connected]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
@@ -225,7 +226,7 @@ function WkAnalyseData( model : { message: string, connected: boolean }) {
         } else {
             return (
                 <div>
-                    <Typography variant="h6" component="div" gutterBottom align="center">
+                    <Typography sx={{ mb: 1.0 }} color="text.primary" gutterBottom align="center">
                         Keine Verbindung zur Zeitnahme
                     </Typography>
                     <DataMapper

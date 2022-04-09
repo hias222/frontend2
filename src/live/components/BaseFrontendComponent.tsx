@@ -6,6 +6,7 @@ import { SingleLaneComponent } from "./SingleLaneComponent";
 
 import classnames from 'classnames';
 import { Grid } from "@mui/material";
+import HeaderStyledLane from "../../shared/components/images/HeaderStyledLane";
 
 export class BaseFrontendComponent extends React.Component<BaseFrontendInterface, {}> {
 
@@ -27,6 +28,7 @@ export class BaseFrontendComponent extends React.Component<BaseFrontendInterface
                             runningTime={this.props.runningTime}
                         />
                     </Grid>
+                    <HeaderStyledLane />
                     {
                         this.props.lanes.map((lane, index) => (
                             <SingleLaneComponent

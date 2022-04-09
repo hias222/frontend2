@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client'
-import { Grid, Typography } from '@mui/material';
 import WkAnalyseData from '../live/services/WsAnalyseData';
 
 import '../styles/App.scss';
@@ -20,13 +19,14 @@ function WsConnect() {
   var get_backend_port = process.env.REACT_APP_BACKEND_PORT === undefined ? "4001" : process.env.REACT_APP_BACKEND_PORT
   var get_backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ? window.location.protocol + "//" + window.location.hostname + ":" + window.location.port : process.env.REACT_APP_BACKEND_URL
   var backend_url = get_backend_url === undefined ? window.location.protocol + "//" + window.location.hostname + ":" + get_backend_port : get_backend_url
-
+  /*
   function printEnvironment() {
     console.log('context_path: ' + context_path + ' (REACT_APP_BACKEND_CONTEX_PATH)')
     console.log('get_backend_port: ' + get_backend_port + ' (REACT_APP_BACKEND_PORT)')
     console.log('get_backend_url: ' + get_backend_url + ' (REACT_APP_BACKEND_DIRECT true/false)')
     console.log('backend_url: ' + backend_url + ' (REACT_APP_BACKEND_URL when false)')
   }
+
 
   function sayHello() {
     printEnvironment()
@@ -39,6 +39,7 @@ function WsConnect() {
   function disconnectWS() {
     console.log('disconnect')
   }
+  */
 
   const [message, setMessage] = useState('');
   const [connected, setConnected] = useState(false);
