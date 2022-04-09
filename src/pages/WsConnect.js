@@ -58,7 +58,7 @@ function WsConnect() {
       console.log(jsondata.type)
     };
 
-    socket.on('FromAPI', messageListener);
+    newSocket.on('FromAPI', messageListener);
 
     newSocket.on('connect', () => {
       console.log('WsSocketState: connected ' + backend_url + context_path);
