@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { LaneData } from "../../interfaces/lanedatainterface";
 import PoolIcon from '@mui/icons-material/Pool';
 import LaneNumber from "./LaneNumber";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Hidden, Typography } from "@mui/material";
 export default class LapStyledLane extends React.Component<LaneData, {}> {
 
     box_height: number;
@@ -47,17 +47,19 @@ export default class LapStyledLane extends React.Component<LaneData, {}> {
             </Grid>
             <Grid container item xs={5} sm={8} md={8} className={laneeven} spacing={0}>
                 <Grid item xs={12} sm={7} md={5}>
-                    <Typography sx={{ mb: 1.0 }} color="text.primary" gutterBottom align="left">
+                    <Typography sx={{ margin: 0 }} color="text.primary" gutterBottom align="left">
                         {correctName}
                     </Typography>
                 </Grid>
-                <Grid item xs={6} sm={5} md={2}>
-                    <Typography sx={{ mb: 1.0 }} color="text.primary" gutterBottom align="center">
-                        {this.props.swimmer.birthyear}
-                    </Typography>
-                </Grid>
+                <Hidden smDown>
+                    <Grid item xs={6} sm={5} md={2}>
+                        <Typography sx={{ margin: 0 }} color="text.primary" gutterBottom align="center">
+                            {this.props.swimmer.birthyear}
+                        </Typography>
+                    </Grid>
+                </Hidden>
                 <Grid item xs={12} sm={12} md={5}>
-                    <Typography sx={{ mb: 1.0 }} color="text.primary" gutterBottom align="left">
+                    <Typography sx={{ margin: 0 }} color="text.primary" gutterBottom align="left">
                         {this.props.swimmer.clubname}
                     </Typography>
                 </Grid>

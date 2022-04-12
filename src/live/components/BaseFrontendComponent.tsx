@@ -19,7 +19,6 @@ export class BaseFrontendComponent extends React.Component<BaseFrontendInterface
                 <HeaderEventHeatComponent
                     EventHeat={this.props.EventHeat}
                 />
-
                 <Grid container spacing={1}>
                     <Grid item xs={12} className={heatheadertime}>
                         <StartStopComponent
