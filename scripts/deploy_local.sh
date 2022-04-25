@@ -5,8 +5,8 @@ TEMP_DIR=/tmp
 REMOTE_TMP=/tmp
 NGINX_DIR=/usr/share/nginx/html
 APP_NAME=frontend
-REMOTE_SERVER_NAME=ubuntu
-REMOTE_SERVER_USER=ubuntu
+REMOTE_SERVER_NAME=swim
+REMOTE_SERVER_USER=pi
 
 cd $BASE_DIR
 
@@ -23,3 +23,6 @@ ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} sudo rm -rf ${NGINX_DIR}/${APP_N
 ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} sudo mkdir ${NGINX_DIR}/${APP_NAME}
 ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} sudo tar -xvzf ${REMOTE_TMP}/${APP_NAME}.tar.gz -C ${NGINX_DIR}/${APP_NAME}
 ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} sudo rm ${REMOTE_TMP}/${APP_NAME}.tar.gz
+
+echo "copy to shared dir ${NGINX_DIR}/${APP_NAME}"
+ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} sudo cp -rf ${NGINX_DIR}/${APP_NAME}/* /opt/shared/vm/frontend
