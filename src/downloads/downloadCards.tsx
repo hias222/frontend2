@@ -30,9 +30,17 @@ function DownloadCards() {
             return Object.keys(obj)
                 .some(function (k) {
                     var filterelement = obj[k].toLowerCase().indexOf(part) !== -1 && obj[k].toLowerCase().indexOf(part) !== null;
-                    return  filterelement
+                    return filterelement
                 });
         });
+    }
+
+    function compareArray(array1 : any, array2 :any ) {
+        var sarray1 = JSON.stringify(array1);
+        var sarray2 = JSON.stringify(array2);
+
+        if (sarray1 === sarray2) return true
+        return false
     }
 
     //getDownloadData()
@@ -47,8 +55,19 @@ function DownloadCards() {
             fetch(download_url)
                 .then((result) => result.blob())
                 .then((data) => data.text())
-                .then(text => JSON.parse(text))
+                .then(text => {
+                    return JSON.parse(text)
+                })
                 .then(json => {
+
+                    if (!compareArray(downloadData.common,json.common) === true) {
+                        setCommon(json.common)
+                    } 
+
+                    if (!compareArray(downloadData.clubs,json.clubs) === true) {
+                        setClubs(json.clubs)
+                    } 
+
                     if (downloadData.clubs.length !== json.clubs.length) setDownloadData(json)
                     if (downloadData.clubs.length !== json.clubs.length) {
                         setClubs(json.clubs)
@@ -58,6 +77,7 @@ function DownloadCards() {
                         prevCommonRef.current = json.common
                         setCommon(json.common)
                     }
+
                 })
                 .catch(error => console.log(error))
         }
