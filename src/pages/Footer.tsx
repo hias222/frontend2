@@ -1,0 +1,45 @@
+import { BottomNavigation, BottomNavigationAction, Button, Typography } from '@mui/material';
+import React from 'react';
+
+import Info from '@mui/icons-material/InfoRounded';
+
+
+export type HeaderState = {
+    value: string;
+};
+
+export default class Footer extends React.Component<{}, HeaderState> {
+
+    constructor(props: {}) {
+        super(props);
+
+        if (window.location.pathname === '/frontend/' || window.location.pathname === '/frontend') {
+            this.state = {
+                value: '/frontend/lists'
+            }
+
+        } else {
+            // the first
+            this.state = {
+                value: window.location.pathname
+            }
+        }
+    }
+
+    //REACT_APP_SITE_TITLE
+
+    render() {
+
+        console.log("path " + window.location.pathname + " - " + this.state.value)
+        return (<div>
+            <BottomNavigation
+                value={this.state.value}
+            >
+                <BottomNavigationAction href="/frontend/info" label="Info" value="/frontend/info" icon={<Info />} sx={{ md: 0 }} />
+                <Typography color="text.primary" sx={{ mt: 1 }}><Button variant="text" href="http://www.sgfuerth.de" target={'_blank'}>www.sgfuerth.de</Button></Typography>
+            </BottomNavigation>
+        </div>
+        );
+    }
+}
+

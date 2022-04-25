@@ -42,7 +42,6 @@ export default class Header extends React.Component<{}, HeaderState> {
                 <BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />
                 {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
                 <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} />
-                <BottomNavigationAction href="/frontend/info" label="Info" value="/frontend/info" icon={<Info />} sx={{ md: 0 }} />
             </BottomNavigation>
         </div>
         );

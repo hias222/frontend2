@@ -10,6 +10,7 @@ import Heats from './pages/heats';
 import Downloads from './pages/downloads';
 import { Container } from '@mui/material';
 import Info from './pages/info';
+import Footer from './pages/Footer';
 
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path="/info" element={<Info />} />
           <Route path="/downloads" element={<Downloads />} />
         </Routes>
+        <Footer/>
       </Container>
     </BrowserRouter>
   </React.StrictMode>,
