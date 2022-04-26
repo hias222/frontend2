@@ -205,7 +205,7 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
                     console.log('finish WSanalyse')
                 };
                 */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [model.message, model.connected]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
@@ -226,9 +226,12 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
         } else {
             return (
                 <div>
-                    <Typography sx={{ mb: 1.0 }} color="text.primary" gutterBottom align="center">
-                        Keine Verbindung zur Zeitnahme
-                    </Typography>
+                    <Grid item  >
+                        <Typography sx={{ mb: 1.0 }} color="text.primary" gutterBottom align="center">
+                            Keine Verbindung zur Zeitnahme
+                        </Typography>
+                    </Grid>
+                    {/*
                     <DataMapper
                         CompetitionName={CompetitionName}
                         DisplayMode={DisplayMode}
@@ -237,12 +240,13 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
                         runningtime={runningTime}
                         eventheat={eventheat}
                     />
+            */}
                 </div>)
         }
     }
 
     return (
-        <Grid container>
+        <Grid container justifyContent="center">
             <Grid item xs={10} display="flex" justifyContent={'center'}>
                 <Typography variant="h6" component="div" gutterBottom align="center">
                     {document_title}
