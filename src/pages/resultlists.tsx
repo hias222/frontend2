@@ -4,8 +4,8 @@ import Iframe from 'react-iframe';
 
 function Resultlists() {
 
-    var splash_url= process.env.REACT_APP_SPLASH_URL === undefined ? "https://www.swimdata.de/index.html" : process.env.REACT_APP_SPLASH_URL
-
+    var local_url =window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/index.html"
+    var splash_url= process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
 
     return (
         <div>
