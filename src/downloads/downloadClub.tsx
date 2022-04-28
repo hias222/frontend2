@@ -8,7 +8,7 @@ function DownloadClub(model: { clubData: [club]; }) {
         if (downloadLink === undefined) return <Button size="small" disabled={true}>{linkText}</Button>
         //console.log(downloadLink)
 
-        return <Button size="small" href={downloadLink} >{linkText}</Button>
+        return <Button size="small" href={downloadLink} target={'_blank'}>{linkText}</Button>
     }
 
     return (
