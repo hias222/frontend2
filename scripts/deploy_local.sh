@@ -5,8 +5,8 @@ TEMP_DIR=/tmp
 REMOTE_TMP=/tmp
 NGINX_DIR=/usr/share/nginx/html
 APP_NAME=frontend
-REMOTE_SERVER_NAME=ubuntu.fritz.box
-REMOTE_SERVER_USER=ubuntu
+REMOTE_SERVER_NAME=jetson.fritz.box
+REMOTE_SERVER_USER=jetson
 SHARE_FOLDER_NAME=splash
 
 . ../.env

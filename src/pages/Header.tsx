@@ -18,7 +18,7 @@ export default class Header extends React.Component<{}, HeaderState> {
 
         if (window.location.pathname === '/frontend/' || window.location.pathname === '/frontend') {
             this.state = {
-                value: '/frontend/live'
+                value: '/frontend/lists'
             }
 
         } else {
