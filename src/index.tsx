@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from './pages/Header';
 import WsConnect from './pages/WsConnect';
 import Resultlists from './pages/resultlists';
+import History from './pages/history';
 import Heats from './pages/heats';
 import Downloads from './pages/downloads';
 import { Container } from '@mui/material';
@@ -22,6 +23,7 @@ ReactDOM.render(
           <Route path="/" element={<Resultlists />} />
           <Route path="/live" element={<WsConnect />} />
           <Route path="/lists" element={<Resultlists />} />
+          <Route path="/history" element={<History />} />
           <Route path="/heats" element={<Heats />} />
           <Route path="/info" element={<Info />} />
           <Route path="/downloads" element={<Downloads />} />

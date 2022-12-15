@@ -3,6 +3,7 @@ import React from 'react';
 
 import ListIcon from '@mui/icons-material/ListOutlined';
 import Downloads from '@mui/icons-material/Download';
+import History from '@mui/icons-material/History';
 
 
 export type HeaderState = {
@@ -40,6 +41,7 @@ export default class Header extends React.Component<{}, HeaderState> {
                 {/*<BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />*/}
                 {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
                 <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} />
+                <BottomNavigationAction href="/frontend/history" label="History" value="/frontend/history" icon={<History />} />
             </BottomNavigation>
         </div>
         );
