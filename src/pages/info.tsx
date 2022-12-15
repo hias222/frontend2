@@ -1,13 +1,33 @@
 import { Button, Grid, Typography } from "@mui/material";
 
 function Info() {
+
+    var impressum_data = process.env.REACT_APP_SITE_IMPRESSUM === undefined ? "Impressum" : process.env.REACT_APP_SITE_IMPRESSUM
+    var impressum_contact = process.env.REACT_APP_SITE_CONTACT === undefined ? "Contact" : process.env.REACT_APP_SITE_CONTACT
+    var impressum_response = process.env.REACT_APP_SITE_RESPONSIBILITY === undefined ? "Response" : process.env.REACT_APP_SITE_RESPONSIBILITY
+
     return (<div>
         <Grid>
             <Typography sx={{ fontWeight: 'bold' }} >
-                Impressum
+                Impressum:
             </Typography>
             <Typography color="text.primary">
-                SG Fürth
+            {impressum_data}
+            </Typography>
+            <Typography sx={{ fontWeight: 'bold' }} >
+                Kontakt:
+            </Typography>
+            <Typography color="text.primary">
+            {impressum_contact}
+            </Typography>
+            <Typography sx={{ fontWeight: 'bold' }} >
+                Verantwortlich für den Inhalt nach §55 Abs. 2 RStV:
+            </Typography>
+            <Typography color="text.primary">
+            {impressum_response}
+            </Typography>
+            <Typography sx={{ fontWeight: 'bold' }} >
+                In Zusammenarbeit mit:
             </Typography>
             <Typography color="text.primary"><Button variant="text" href="http://www.sgfuerth.de" target={'_blank'}>www.sgfuerth.de</Button></Typography>
             <Typography sx={{ fontWeight: 'bold' }} >
