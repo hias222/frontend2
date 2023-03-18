@@ -20,7 +20,7 @@ ReactDOM.render(
       <Container maxWidth="md">
         <Header />
         <Routes>
-          <Route path="/" element={<Resultlists />} />
+          <Route path="/" element={<History />} />
           <Route path="/live" element={<WsConnect />} />
           <Route path="/lists" element={<Resultlists />} />
           <Route path="/history" element={<History />} />
