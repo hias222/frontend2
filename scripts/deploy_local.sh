@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE_DIR=/Users/MFU/projects/private/swimcloud/frontend2
+BASE_DIR=/Users/matthiasfuchs/Projects/schwimmen/frontend2
 TEMP_DIR=/tmp
 REMOTE_TMP=/tmp
 NGINX_DIR=/usr/share/nginx/html
@@ -9,8 +9,8 @@ APP_NAME=frontend
 #REMOTE_SERVER_USER=jetson
 #SHARE_FOLDER_NAME=splash
 
-#REMOTE_SERVER_NAME=rockpi-4b.fritz.box
-REMOTE_SERVER_NAME=192.168.178.154
+REMOTE_SERVER_NAME=rockpi-4b.fritz.box
+#REMOTE_SERVER_NAME=192.168.178.154
 REMOTE_SERVER_USER=rock
 SHARE_FOLDER_NAME=splash
 
@@ -42,6 +42,7 @@ function exec_remote(){
 # build
 npm run build
 
+echo $PWD
 cd build
 tar -cvzf $TEMP_DIR/${APP_NAME}.tar.gz *
 scp $TEMP_DIR/${APP_NAME}.tar.gz ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME}:${REMOTE_TMP}

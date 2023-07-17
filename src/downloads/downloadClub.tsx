@@ -26,8 +26,8 @@ function DownloadClub(model: { clubData: [club]; }) {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                {getDownloadButton(club.entriesfile, 'Meldungen')}
-                                {getDownloadButton(club.certsfile, 'Teilnehmerkarte')}
+                                {/* {getDownloadButton(club.entriesfile, 'Meldungen')} */}
+                                {getDownloadButton(club.certsfile, 'Urkunden')}
                             </CardActions>
                         </Card>
                     </Grid>
