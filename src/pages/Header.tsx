@@ -17,7 +17,7 @@ export default class Header extends React.Component<{}, HeaderState> {
 
         if (window.location.pathname === '/frontend/' || window.location.pathname === '/frontend') {
             this.state = {
-                value: '/frontend/history'
+                value: '/frontend/lists'
             }
 
         } else {
@@ -37,10 +37,10 @@ export default class Header extends React.Component<{}, HeaderState> {
             <BottomNavigation
                 value={this.state.value}
             >
-                {/* <BottomNavigationAction href="/frontend/lists" label="List" value="/frontend/lists" icon={<ListIcon />} /> */}
+                <BottomNavigationAction href="/frontend/lists" label="List" value="/frontend/lists" icon={<ListIcon />} />
                 {/*<BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />*/}
                 {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
-                {/* <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} /> */}
+                <BottomNavigationAction href="/frontend/downloads" label="Downloads" value="/frontend/downloads" icon={<Downloads />} />
                 <BottomNavigationAction href="/frontend/history" label="History" value="/frontend/history" icon={<History />} />
             </BottomNavigation>
         </div>
