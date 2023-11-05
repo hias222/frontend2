@@ -8,6 +8,12 @@ function History() {
                 Vergangene Wettkämpfe
             </Typography>
             <Typography sx={{ fontWeight: 'bold' }} >
+            Bay. Kurzbahn Meisterschaften in Nürnberg | 25m | 14./15.10.2023
+            </Typography>
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKResults&File=11892023.pdf" target={'_blank'}>Protokoll</Button>
+            </Typography>
+            <Typography sx={{ fontWeight: 'bold' }} >
             22. Amberger Kurfürstenpokal | 50m | 24/25.06.2022
             </Typography>
             <Typography color="text.secondary">
