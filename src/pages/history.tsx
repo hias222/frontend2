@@ -8,6 +8,12 @@ function History() {
                 Vergangene Wettkämpfe
             </Typography>
             <Typography sx={{ fontWeight: 'bold' }} >
+            45. Kinderschwimmen Fürth | 25m | 11.11.2023
+            </Typography>
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKResults&File=12422023.pdf" target={'_blank'}>Protokoll</Button>
+            </Typography>
+            <Typography sx={{ fontWeight: 'bold' }} >
             Bay. Kurzbahn Meisterschaften in Nürnberg | 25m | 14./15.10.2023
             </Typography>
             <Typography color="text.secondary">
