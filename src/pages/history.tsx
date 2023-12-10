@@ -4,6 +4,16 @@ function History() {
 
     return (<div>
         <Grid>
+        <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
+                Kommende Wettkämpfe
+            </Typography>
+            <Typography >
+            März Meeting Nürnberg | 50m | 09/10.03.2024
+            </Typography>
+            <Typography >
+            Int Bayerische Masters Fürth | 25m | 16.03.2024
+            </Typography>
+
             <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
                 Vergangene Wettkämpfe
             </Typography>
