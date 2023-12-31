@@ -4,8 +4,13 @@ import Iframe from 'react-iframe';
 
 function Resultlists() {
 
-    var local_url =window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/index.html"
-    var splash_url= process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
+    var wk_name = "masters"
+    var route_path = "splashdata/" + wk_name
+    var local_url =window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
+    var base_url= process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
+    var splash_url = base_url + "/" + route_path + "/index.html"
+
+    console.log(splash_url)
 
     return (
         <div>
