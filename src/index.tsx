@@ -12,6 +12,7 @@ import Downloads from './pages/downloads';
 import { Container } from '@mui/material';
 import Info from './pages/info';
 import Footer from './pages/Footer';
+import StartPage from './pages/startPage';
 
 
 ReactDOM.render(
@@ -20,7 +21,8 @@ ReactDOM.render(
       <Container maxWidth="md">
         <Header />
         <Routes>
-          <Route path="/" element={<History />} />
+          <Route path="/" element={<StartPage />} />
+          <Route path="/start" element={<StartPage />} />
           <Route path="/live" element={<WsConnect />} />
           <Route path="/lists" element={<Resultlists />} />
           <Route path="/history" element={<History />} />
