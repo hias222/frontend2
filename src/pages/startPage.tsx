@@ -15,16 +15,7 @@ function StartPage() {
     return (<>
         <Header numberPage={0} />
         <Container maxWidth="lg">
-            <Card sx={{ minWidth: 275 }}>
-                <CardActionArea onClick={(e) => handleSubmit(e, "masters")}>
-                    <CardContent>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            Bayerische Masters
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
+            
             <Card sx={{ minWidth: 275 }}>
                 <CardActionArea onClick={e => handleSubmit(e, "maerz")}>
                     <CardContent>
@@ -34,6 +25,17 @@ function StartPage() {
                     </CardContent>
                 </CardActionArea>
             </Card>
+
+            <Card sx={{ minWidth: 275 }}>
+                <CardActionArea onClick={(e) => handleSubmit(e, "masters")}>
+                    <CardContent>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            Bayerische Masters
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+            
         </Container>
         <Footer/>
     </>)

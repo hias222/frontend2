@@ -4,27 +4,15 @@ import React from 'react';
 import Info from '@mui/icons-material/InfoRounded';
 import { Link, useParams } from 'react-router-dom';
 import Header from './Header';
+import GetUrlPath from '../shared/utilities/getUrlPath';
 
 export default function Footer() {
     //export default function Navigation() {
     //const [value, setValue] = React.useState(props.numberPage);
     //const [details, setDetail] = React.useState(props.detail);
 
-
-    function GetUrlPath(): string {
-        const params = useParams();
-        if (params.base !== "" && params.base !== undefined) {
-            return params.base
-        } else {
-            return "undefined"
-        }
-
-    }
-
     return (
-        <BottomNavigation
-        //value={this.state.value}
-        >
+        <BottomNavigation>
             <BottomNavigationAction component={Link} label="Info" to={"/info/" + GetUrlPath()} icon={<Info />} sx={{ md: 0 }} />
             <Typography color="text.primary" sx={{ mt: 1 }}><Button variant="text" href="http://www.sgfuerth.de" target={'_blank'}>www.sgfuerth.de</Button></Typography>
         </BottomNavigation>

@@ -4,6 +4,7 @@ import Iframe from 'react-iframe';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import GetUrlPath from '../shared/utilities/getUrlPath';
 
 function Resultlists() {
 
@@ -13,15 +14,6 @@ function Resultlists() {
     var splash_url = base_url + "/" + route_path + "/index.html"
 
     console.log(splash_url)
-
-    function GetUrlPath(): string {
-        const params = useParams();
-        if (params.base !== "" && params.base !== undefined) {
-            return params.base
-        } else {
-            return ""
-        }
-    }
 
     function getAllPages(){
       return  <>

@@ -2,23 +2,13 @@ import { Button, Grid, Typography } from "@mui/material";
 import Header from "./Header";
 import { useParams } from "react-router-dom";
 import Footer from "./Footer";
+import GetUrlPath from "../shared/utilities/getUrlPath";
 
 function Info() {
 
     var impressum_data = process.env.REACT_APP_SITE_IMPRESSUM === undefined ? "Impressum" : process.env.REACT_APP_SITE_IMPRESSUM
     var impressum_contact = process.env.REACT_APP_SITE_CONTACT === undefined ? "Contact" : process.env.REACT_APP_SITE_CONTACT
     var impressum_response = process.env.REACT_APP_SITE_RESPONSIBILITY === undefined ? "Response" : process.env.REACT_APP_SITE_RESPONSIBILITY
-
-
-    function GetUrlPath(): string {
-        const params = useParams();
-        if (params.base !== "" && params.base !== undefined) {
-            return params.base
-        } else {
-            return ""
-        }
-
-    }
     
     return (<>
         <Header numberPage={1} detail={GetUrlPath()} />

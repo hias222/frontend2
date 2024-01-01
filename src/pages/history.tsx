@@ -1,11 +1,12 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header from "./Header";
 import Footer from "./Footer";
+import GetUrlPath from "../shared/utilities/getUrlPath";
 
 function History() {
 
     return (<>
-        <Header numberPage={2} />
+        <Header numberPage={1} detail={GetUrlPath()} />
         <Grid>
         <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
                 Kommende Wettkämpfe

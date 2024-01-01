@@ -4,6 +4,7 @@ import DownloadClub from "./downloadClub";
 import DownloadCommon from "./downloadCommon";
 import { common, club, downloadData } from "./downloadsType";
 import SearchIcon from '@mui/icons-material/Clear'
+import GetUrlPath from "../shared/utilities/getUrlPath";
 
 
 function DownloadCards() {
@@ -22,7 +23,6 @@ function DownloadCards() {
     const prevCountRef = useRef('');
     const prevClubDataRef = useRef<[club]>([{ name: '', code: '0' }]);
     const prevCommonRef = useRef<[common]>([{ name: '' }])
-
 
     function filterValuePart(arr: any, part: any) {
         part = part.toLowerCase();
@@ -49,16 +49,19 @@ function DownloadCards() {
         return false
     }
 
+    var route_path = "splashdata/" + GetUrlPath()
+    var local_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
+    var base_url = process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
+    var json_url = base_url + "/" + route_path + "/downloads.json"
+
+
     //getDownloadData()
     useEffect(() => {
-
-        var download_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/frontend/downloads.json"
-
         function getDownloadData() {
 
-            console.log('loading Data from ' + download_url)
+            console.log('loading Data from ' + json_url)
 
-            fetch(download_url)
+            fetch(json_url)
                 .then((result) => result.blob())
                 .then((data) => data.text())
                 .then(text => {
