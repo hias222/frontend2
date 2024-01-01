@@ -22,6 +22,9 @@ function StartPage() {
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                             Nürnberg März Meeting
                         </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            09/10.03.2024
+                        </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -30,7 +33,10 @@ function StartPage() {
                 <CardActionArea onClick={(e) => handleSubmit(e, "masters")}>
                     <CardContent>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            Bayerische Masters
+                            Bayerische Kurzbahnmeisterschaft der Masters 2024
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            16.03.2024
                         </Typography>
                     </CardContent>
                 </CardActionArea>
