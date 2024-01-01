@@ -1,6 +1,6 @@
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ListIcon from '@mui/icons-material/ListOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import Downloads from '@mui/icons-material/Download';

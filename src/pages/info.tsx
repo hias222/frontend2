@@ -1,6 +1,5 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header from "./Header";
-import { useParams } from "react-router-dom";
 import Footer from "./Footer";
 import GetUrlPath from "../shared/utilities/getUrlPath";
 

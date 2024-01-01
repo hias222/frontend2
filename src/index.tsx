@@ -10,7 +10,6 @@ import Heats from './pages/heats';
 import Downloads from './pages/downloads';
 import { Container } from '@mui/material';
 import Info from './pages/info';
-import Footer from './pages/Footer';
 import StartPage from './pages/startPage';
 
 const domNode = document.getElementById('root') as HTMLElement;

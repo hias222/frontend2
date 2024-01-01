@@ -2,8 +2,7 @@ import { BottomNavigation, BottomNavigationAction, Button, Typography } from '@m
 import React from 'react';
 
 import Info from '@mui/icons-material/InfoRounded';
-import { Link, useParams } from 'react-router-dom';
-import Header from './Header';
+import { Link } from 'react-router-dom';
 import GetUrlPath from '../shared/utilities/getUrlPath';
 
 export default function Footer() {
