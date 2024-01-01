@@ -1,8 +1,11 @@
 import { Button, Grid, Typography } from "@mui/material";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function History() {
 
-    return (<div>
+    return (<>
+        <Header numberPage={2} />
         <Grid>
         <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
                 Kommende Wettkämpfe
@@ -60,7 +63,8 @@ function History() {
                 <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKResults&File=4092022.pdf" target={'_blank'}>Protokoll</Button>
             </Typography>
         </Grid>
-    </div>)
+        <Footer/>
+    </>)
 }
 
 export default History;
