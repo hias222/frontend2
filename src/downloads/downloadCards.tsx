@@ -61,7 +61,7 @@ function DownloadCards() {
 
             console.log('loading Data from ' + json_url)
 
-            fetch(json_url)
+            fetch(json_url, {cache: "no-cache"})
                 .then((result) => result.blob())
                 .then((data) => data.text())
                 .then(text => {
