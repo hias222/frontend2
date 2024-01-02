@@ -5,19 +5,10 @@ import DownloadCommon from "./downloadCommon";
 import { common, club, downloadData } from "./downloadsType";
 import SearchIcon from '@mui/icons-material/Clear'
 import GetUrlPath from "../shared/utilities/getUrlPath";
+import GetPageName from "../naming/GetPageName";
 
 
 function DownloadCards() {
-
-    function getPageName() {
-        //return getAllLinks()
-        var pageName = GetUrlPath()
-        if (pageName !== undefined ) {
-            return pageName
-        } else {
-            return "Ergebnisdienst Schwimmen"
-        }
-    }
 
     var emptyData: downloadData = {
         common: [{ name: '' }],
@@ -128,7 +119,7 @@ function DownloadCards() {
     }
 
     //var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
-    var document_title = getPageName()
+    var document_title = GetPageName()
 
     return (
         <Grid container spacing={{ xs: 1, md: 2 }}>
