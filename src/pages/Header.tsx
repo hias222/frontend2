@@ -48,7 +48,7 @@ export default function Header(props: {
             value={value}
         >
             <BottomNavigationAction component={Link} label="Home" to="/start" icon={<HomeIcon />} />
-            <BottomNavigationAction component={Link} label="History" to={"/history/" + details} icon={<History />} />
+            {/* <BottomNavigationAction component={Link} label="History" to={"/history/" + details} icon={<History />} /> */}
         </BottomNavigation>
     }
 
