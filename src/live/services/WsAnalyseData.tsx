@@ -209,7 +209,9 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
     }, [model.message, model.connected]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
-    var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
+    // var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
+    var document_title = "Ergebnisdienst Schwimmen"
+
 
     function getDataMapper() {
         if (connectstate) {
