@@ -9,7 +9,7 @@ function DownloadCommon(model: { commonData: [common]; }) {
         if (downloadLink === undefined) return <Button size="small" disabled={true}>{linkText}</Button>
         //console.log(downloadLink)
 
-        return <Button size="small" href={downloadLink} target={'_blank'}>{linkText}</Button>
+        return <Button size="small" href={"../../" + downloadLink} target={'_blank'}>{linkText}</Button>
     }
 
 
@@ -18,7 +18,7 @@ function DownloadCommon(model: { commonData: [common]; }) {
             {
                 model.commonData.map((commonTag, index) => (
                     <Grid item key={'100' + index}>
-                        <Card sx={{ minWidth: 275, boxShadow:3}} key={index}>
+                        <Card sx={{ minWidth: 275, boxShadow: 3 }} key={index}>
                             <CardContent>
                                 <Typography sx={{ mb: 1.5 }} color="text.secondary" gutterBottom>
                                     {commonTag.name}
