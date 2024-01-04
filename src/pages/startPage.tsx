@@ -9,7 +9,7 @@ function StartPage() {
     var local_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
     var base_url = process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
     var image_url = base_url + "/splashdata"
-    
+
 
     const navigate = useNavigate();
 
@@ -19,17 +19,19 @@ function StartPage() {
     }
 
     return (<>
-        <Header numberPage={0} />
+        <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
-
-            <Card sx={{ minWidth: 275 }}>
-                <CardMedia
-                    component="img"
-                    sx={{ height: 88 , width:90, marginLeft: '30%' }}
-                    image={ image_url + "/maerz/images/card.jpg"}
-                    alt="FCN"
-                />
+            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
                 <CardActionArea onClick={e => handleSubmit(e, "maerz")}>
+                    <div style={{
+                        height: 6
+                    }} />
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 88, width: 90, marginLeft: '30%' }}
+                        image={image_url + "/maerz/images/card.jpg"}
+                        alt="FCN"
+                    />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             Nürnberg März Meeting
@@ -41,14 +43,21 @@ function StartPage() {
                 </CardActionArea>
             </Card>
 
-            <Card sx={{ minWidth: 275 }} color="text.secondary" >
+            <div style={{
+                height: 6
+            }} />
+
+            <Card sx={{ minWidth: 275, boxShadow: 6 }} >
                 <CardActionArea onClick={(e) => handleSubmit(e, "masters")}>
-                <CardMedia
-                    component="img"
-                    sx={{ height: 88 , width: 140, marginLeft: '30%'  }}
-                    image={ image_url + "/masters/images/card.jpg"}
-                    alt="BSV"
-                />
+                    <div style={{
+                        height: 6
+                    }} />
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 88, width: 140, marginLeft: '30%' }}
+                        image={image_url + "/masters/images/card.jpg"}
+                        alt="BSV"
+                    />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             Bayerische Kurzbahnmeisterschaft der Masters 2024
@@ -59,6 +68,10 @@ function StartPage() {
                     </CardContent>
                 </CardActionArea>
             </Card>
+
+            <div style={{
+                height: 6
+            }} />
 
         </Container>
         <Footer />

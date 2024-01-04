@@ -8,15 +8,17 @@ import History from '@mui/icons-material/History';
 import GetUrlPath from '../shared/utilities/getUrlPath';
 
 export default function Header(props: {
-    numberPage: number, detail?: string
+    numberPage: number, detail?: string, show?: boolean
 }) {
     //export default function Navigation() {
     const [value, setValue] = React.useState(props.numberPage);
     const [details, setDetail] = React.useState(props.detail);
 
+    var showHeader: boolean = props.show === undefined ? showHeader = true : props.show
+
     function chooseLinks() {
         //return getAllLinks()
-        if (GetUrlPath() !== undefined ) {
+        if (GetUrlPath() !== undefined) {
             return getAllLinks()
         } else {
             return getBaseLinks()
@@ -39,7 +41,14 @@ export default function Header(props: {
         </BottomNavigation>
     }
 
+    function homeButton() {
+        if (showHeader) {
+            return <BottomNavigationAction component={Link} label="Home" to="/start" icon={<HomeIcon />} />
+        }
+    }
+
     function getBaseLinks() {
+        console.log(showHeader)
         return <BottomNavigation
             onChange={(event, newValue) => {
                 setValue(newValue);
@@ -47,7 +56,7 @@ export default function Header(props: {
             showLabels
             value={value}
         >
-            {/* <BottomNavigationAction component={Link} label="Home" to="/start" icon={<HomeIcon />} /> */}
+            {homeButton()}
             {/* <BottomNavigationAction component={Link} label="History" to={"/history/" + details} icon={<History />} /> */}
         </BottomNavigation>
     }
