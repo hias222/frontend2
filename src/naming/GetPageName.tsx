@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 
-function changeName(name: string): string{
+function changeName(name: string): string {
 
     if (name === "maerz") {
         return "Nürnberger Märzmeeting 2024"
     } else if (name === "masters") {
         return "Bayerische Kurzbahnmeisterschaft der Masters 2024"
+    } else if (name === "verein") {
+        return "SG Fürth Vereinsmeisterschaft 2024"
     } else {
         return name
     }

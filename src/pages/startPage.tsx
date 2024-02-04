@@ -73,6 +73,34 @@ function StartPage() {
                 height: 6
             }} />
 
+            <Card sx={{ minWidth: 275, boxShadow: 6 }} >
+                <CardActionArea onClick={(e) => handleSubmit(e, "verein")}>
+                    <div style={{
+                        height: 6
+                    }} />
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 81, width: 300, marginLeft: '30%' }}
+                        image={image_url + "/verein/images/logo_300_81.png"}
+                        alt="BSV"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            SG Fürth Vereinsmeisterschaft 2024
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            17.03.2024
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+
+            <div style={{
+                height: 6
+            }} />
+
+
+
         </Container>
         <Footer />
     </>)
