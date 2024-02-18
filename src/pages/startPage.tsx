@@ -80,7 +80,7 @@ function StartPage() {
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 81, width: 300, marginLeft: '10%' }}
+                        sx={{ height: 81, width: 300, marginLeft: '2%' }}
                         image={image_url + "/verein/images/logo_300_81.png"}
                         alt="BSV"
                     />
