@@ -22,22 +22,22 @@ function StartPage() {
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "maerz")}>
+                <CardActionArea onClick={e => handleSubmit(e, "amberg")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 88, width: 90, marginLeft: '30%' }}
-                        image={image_url + "/maerz/images/card.jpg"}
-                        alt="FCN"
+                        sx={{ height: 100, width: 90, marginLeft: '2%' }}
+                        image={image_url + "/amberg/images/card.png"}
+                        alt="Amberg"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Nürnberg März Meeting
+                            23. Amberger Kurfürstenpokal
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            09/10.03.2024
+                            15/16.04.2024
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -46,59 +46,6 @@ function StartPage() {
             <div style={{
                 height: 6
             }} />
-
-            <Card sx={{ minWidth: 275, boxShadow: 6 }} >
-                <CardActionArea onClick={(e) => handleSubmit(e, "masters")}>
-                    <div style={{
-                        height: 6
-                    }} />
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 88, width: 140, marginLeft: '30%' }}
-                        image={image_url + "/masters/images/card.jpg"}
-                        alt="BSV"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Bayerische Kurzbahnmeisterschaft der Masters 2024
-                        </Typography>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            16.03.2024
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <div style={{
-                height: 6
-            }} />
-
-            <Card sx={{ minWidth: 275, boxShadow: 6 }} >
-                <CardActionArea onClick={(e) => handleSubmit(e, "verein")}>
-                    <div style={{
-                        height: 6
-                    }} />
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 81, width: 300, marginLeft: '2%' }}
-                        image={image_url + "/verein/images/logo_300_81.png"}
-                        alt="BSV"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            SG Fürth Vereinsmeisterschaft 2024
-                        </Typography>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            17.03.2024
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <div style={{
-                height: 6
-            }} />
-
 
 
         </Container>
