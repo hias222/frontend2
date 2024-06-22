@@ -22,22 +22,22 @@ function StartPage() {
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "amberg")}>
+                <CardActionArea onClick={e => handleSubmit(e, "bezirk")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 100, width: 90, marginLeft: '2%' }}
-                        image={image_url + "/amberg/images/card.png"}
-                        alt="Amberg"
+                        sx={{ height: 100, width: 280, marginLeft: '1%' }}
+                        image={image_url + "/bezirk/images/card.jpeg"}
+                        alt="Bezirk 2024"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            23. Amberger Kurfürstenpokal
+                            Bezirksmeisterschaften Mittelfranken 2024
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            15/16.04.2024
+                            06/07.07.2024
                         </Typography>
                     </CardContent>
                 </CardActionArea>
