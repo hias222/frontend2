@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import WsConnect from './pages/WsConnect';
 import Resultlists from './pages/resultlists';
+import StartLists from './pages/startlist';
 import History from './pages/history';
 import Heats from './pages/heats';
 import Downloads from './pages/downloads';
@@ -23,7 +24,8 @@ root.render(
           <Route path="/" element={<StartPage />} />
           <Route path="/start" element={<StartPage />} />
           <Route path="/live" element={<WsConnect />} />
-          <Route path="/lists/:base" element={<Resultlists />} />
+          <Route path="/results/:base" element={<Resultlists />} />
+          <Route path="/lists/:base" element={<StartLists />} />
           <Route path="/history/:base" element={<History />} />
           <Route path="/heats" element={<Heats />} />
           <Route path="/info/:base" element={<Info />} />

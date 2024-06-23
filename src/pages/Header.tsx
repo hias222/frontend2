@@ -2,6 +2,7 @@ import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ListIcon from '@mui/icons-material/ListOutlined';
+import ResultIcon from '@mui/icons-material/SportsScore';
 import HomeIcon from '@mui/icons-material/Home';
 import Downloads from '@mui/icons-material/Download';
 import History from '@mui/icons-material/History';
@@ -35,6 +36,7 @@ export default function Header(props: {
         >
             <BottomNavigationAction component={Link} label="Home" to="/start" icon={<HomeIcon />} />
             <BottomNavigationAction component={Link} label="List" to={"/lists/" + details} icon={<ListIcon />} />
+            <BottomNavigationAction component={Link} label="Result" to={"/results/" + details} icon={<ResultIcon />} />
             {/*<BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />*/}
             {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
             <BottomNavigationAction component={Link} label="Downloads" to={"/downloads/" + details} icon={<Downloads />} />

@@ -8,6 +8,8 @@ function changeName(name: string): string {
         return "Bayerische Kurzbahnmeisterschaft der Masters 2024"
     } else if (name === "verein") {
         return "SG Fürth Vereinsmeisterschaft 2024"
+    } else if (name === "bezirk") {
+        return "Bezirksmeisterschaften 2024"
     } else {
         return name
     }
