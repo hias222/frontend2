@@ -22,22 +22,22 @@ function StartPage() {
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "bezirk")}>
+                <CardActionArea onClick={e => handleSubmit(e, "kinder")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 100, width: 280, marginLeft: '1%' }}
-                        image={image_url + "/bezirk/images/card.jpeg"}
-                        alt="Bezirk 2024"
+                        sx={{ height: 90, width: 320, marginLeft: '1%' }}
+                        image={image_url + "/kinder/images/card.png"}
+                        alt="46. Fürther Kinderschwimmen"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Bezirksmeisterschaften Mittelfranken 2024
+                            46. Fürther Kinderschwimmen
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            06/07.07.2024
+                            09.11.2024
                         </Typography>
                     </CardContent>
                 </CardActionArea>

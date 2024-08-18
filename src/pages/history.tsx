@@ -6,27 +6,47 @@ import GetUrlPath from "../shared/utilities/getUrlPath";
 function History() {
 
     return (<>
-        <Header numberPage={1} detail={GetUrlPath()} />
+        <Header numberPage={2} detail={GetUrlPath()} />
         <Grid>
             <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
                 Kommende Wettkämpfe
             </Typography>
-            <Typography >
-                März Meeting Nürnberg | 50m | 09/10.03.2024
-            </Typography>
-            <Typography >
-                Int Bayerische Masters Fürth | 25m | 16.03.2024
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                46. Fürther Kinderschwimmen | 25m | 09.11.2024
             </Typography>
 
             <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
+                <br></br>
                 Vergangene Wettkämpfe
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                Mittelfränkische Meisterchaften | 50m | 06/07.07.2024
+            </Typography>
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKInfo&File=9392024.pdf" target={'_blank'}>Protokoll</Button>
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                23. Amberger Kurfürstenpokal | 50m | 15/16.06.2024
+            </Typography>
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKInfo&File=2722024.pdf" target={'_blank'}>Protokoll</Button>
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                März Meeting Nürnberg | 50m | 09/10.03.2024
+            </Typography>
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKInfo&File=3122024.pdf" target={'_blank'}>Protokoll</Button>
             </Typography>
 
             <Typography sx={{ fontWeight: 'bold' }}>
                 Int Bayerische Masters Fürth | 25m | 16.03.2024
             </Typography>
             <Typography color="text.secondary">
-                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKResults&File=482024.pdf" target={'_blank'}>Protokoll</Button>
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKInfo&File=482024.pdf" target={'_blank'}>Protokoll</Button>
             </Typography>
 
             <Typography sx={{ fontWeight: 'bold' }}>
