@@ -39,7 +39,7 @@ export default function Header(props: {
             {/* <BottomNavigationAction component={Link} label="Result" to={"/results/" + details} icon={<ResultIcon />} /> */}
             {/*<BottomNavigationAction href="/frontend/live" label="Live" value="/frontend/live" icon={<LiveIcon />} />*/}
             {/* BottomNavigationAction href="/frontend/heats" label="Läufe" value="/frontend/heats" icon={<HeatsIcon />} /> */}
-            {/* <BottomNavigationAction component={Link} label="Downloads" to={"/downloads/" + details} icon={<Downloads />} /> */}
+            <BottomNavigationAction component={Link} label="Downloads" to={"/downloads/" + details} icon={<Downloads />} />
             <BottomNavigationAction component={Link} label="History" to={"/history/" + details} icon={<History />} />
             
         </BottomNavigation>
