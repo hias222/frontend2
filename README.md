@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 <https://developer.okta.com/blog/2021/07/14/socket-io-react-tutorial>
 
+node v 18 OK
+node v 22 im Test
+
 ## Available Scripts
 
 In the project directory, you can run:

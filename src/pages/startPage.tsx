@@ -22,22 +22,22 @@ function StartPage() {
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "kinder")}>
+                <CardActionArea onClick={e => handleSubmit(e, "verein")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
                         sx={{ height: 90, width: 320, marginLeft: '1%' }}
-                        image={image_url + "/kinder/images/card.png"}
-                        alt="46. Fürther Kinderschwimmen"
+                        image={image_url + "/verein/images/card.png"}
+                        alt="Vereiensmeisterschaft 2025"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            46. Fürther Kinderschwimmen
+                            Vereinsmeisterschaft 2025
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            09.11.2024
+                            08.02.2025
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -46,8 +46,6 @@ function StartPage() {
             <div style={{
                 height: 6
             }} />
-
-
         </Container>
         <Footer />
     </>)

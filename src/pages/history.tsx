@@ -8,17 +8,32 @@ function History() {
     return (<>
         <Header numberPage={3} detail={GetUrlPath()} />
         <Grid>
-            <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
+            <Typography color="text.secondary" sx={{ fontWeight: 'bold' }} >
                 Kommende Wettkämpfe
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                Vereinsmeisterchaften 2025 | 25m | 08.02.2025
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                Nürnberg März Meting | 50m | 29/30.03.2025
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                Mittelfränkische Meisterschaften | 50m | 28/29.06.2025
+            </Typography>
+
+            <Typography color="text.secondary" sx={{ fontWeight: 'bold' }} >
+                <br></br>
+                Vergangene Wettkämpfe
             </Typography>
 
             <Typography sx={{ fontWeight: 'bold' }}>
                 46. Fürther Kinderschwimmen | 25m | 09.11.2024
             </Typography>
-
-            <Typography color="text.primary" sx={{ fontWeight: 'bold' }} >
-                <br></br>
-                Vergangene Wettkämpfe
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://dsvdaten.dsv.de/File.aspx?F=WKResults&File=12322024.pdf" target={'_blank'}>Protokoll</Button>
             </Typography>
 
             <Typography sx={{ fontWeight: 'bold' }}>
