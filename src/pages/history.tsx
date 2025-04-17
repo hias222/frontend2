@@ -12,21 +12,16 @@ function History() {
                 Kommende Wettkämpfe
             </Typography>
 
-            <Typography sx={{ fontWeight: 'bold' }}>
-                Vereinsmeisterchaften 2025 | 25m | 08.02.2025
-            </Typography>
-
-            <Typography sx={{ fontWeight: 'bold' }}>
-                Nürnberg März Meting | 50m | 29/30.03.2025
-            </Typography>
-
-            <Typography sx={{ fontWeight: 'bold' }}>
-                Mittelfränkische Meisterschaften | 50m | 28/29.06.2025
-            </Typography>
-
             <Typography color="text.secondary" sx={{ fontWeight: 'bold' }} >
                 <br></br>
                 Vergangene Wettkämpfe
+            </Typography>
+
+            <Typography sx={{ fontWeight: 'bold' }}>
+                Vereinsmeisterchaften 2025 | 25m | 08.02.2025
+            </Typography>
+            <Typography color="text.secondary">
+                <Button variant="text" href="https://sgfuerth.de/wp-content/uploads/2025/02/Protokoll_2025.pdf" target={'_blank'}>Protokoll</Button>
             </Typography>
 
             <Typography sx={{ fontWeight: 'bold' }}>

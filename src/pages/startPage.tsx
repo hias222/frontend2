@@ -22,22 +22,22 @@ function StartPage() {
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "verein")}>
+                <CardActionArea onClick={e => handleSubmit(e, "bezirk")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
                         sx={{ height: 90, width: 320, marginLeft: '1%' }}
-                        image={image_url + "/verein/images/card.png"}
-                        alt="Vereiensmeisterschaft 2025"
+                        image={image_url + "/bezirk/images/card.jpeg"}
+                        alt="Bezirksmeisterschaften Mittelfranken 2025"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Vereinsmeisterschaft 2025
+                            Bezirksmeisterschaften 2025
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            08.02.2025
+                            28/29.06.2025
                         </Typography>
                     </CardContent>
                 </CardActionArea>
