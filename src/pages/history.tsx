@@ -6,7 +6,7 @@ import GetUrlPath from "../shared/utilities/getUrlPath";
 function History() {
 
     return (<>
-        <Header numberPage={3} detail={GetUrlPath()} />
+        <Header numberPage={4} detail={GetUrlPath()} />
         <Grid>
             <Typography color="text.secondary" sx={{ fontWeight: 'bold' }} >
                 Kommende Wettkämpfe
