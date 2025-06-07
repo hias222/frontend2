@@ -54,7 +54,7 @@ function StartPage() {
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 105, width: 300, marginLeft: '1%' }}
+                        sx={{ height: 115, width: 330, marginLeft: '1%' }}
                         image={image_url + "/bayern/images/fcn-bsv.jpeg"}
                         alt="Bayerische aquafeel Kurzbahnmeisterschaften in Nürnberg"
                     />
@@ -80,7 +80,7 @@ function StartPage() {
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 125, width: 320, marginLeft: '1%' }}
+                        sx={{ height: 115, width: 320, marginLeft: '1%' }}
                         image={image_url + "/dmsm/images/fcn.jpeg"}
                         alt="28. Deutscher Mannschaftswettbewerb Schwimmen der Masters"
                     />
