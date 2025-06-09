@@ -9,15 +9,15 @@ const mylane: [LaneState] = [{
     finishtime: '',
     islaptime: false,
     lane: '0',
-    laptime:'',
-    place:'',
-    swimmerData: 
-        {
-            clubid:'',
-            clubname:'',
-            name:''
-        }
-    
+    laptime: '',
+    place: '',
+    swimmerData:
+    {
+        clubid: '',
+        clubname: '',
+        name: ''
+    }
+
 }];
 
 //function DataMapper({ jsonData }: { jsonData: any }, { DisplayMode }: { DisplayMode: string },
@@ -37,9 +37,9 @@ function DataMapper(model: {
     const [displayMode, setDisplayMode] = useState('')
 
     if (model.eventheat.heatnr !== eventHeat.heatnr || model.eventheat.eventnr !== eventHeat.eventnr) {
-     
-        console.log('DataMapper old Heat: ' + eventHeat.heatnr + ' WK: ' + eventHeat.eventnr )
-        console.log('DataMapper new Heat: ' + model.eventheat.heatnr + ' WK: ' + model.eventheat.heatnr )
+
+        console.log('DataMapper E/H : ' + eventHeat.eventnr + '/' + eventHeat.heatnr + " --> " +
+            model.eventheat.eventnr + '/' + model.eventheat.heatnr)
 
         setEventHeat(model.eventheat);
 
@@ -67,7 +67,8 @@ function DataMapper(model: {
             var sizeLanes = lengthLanes - correctValueForLaneNull
 
             if (lane > sizeLanes) {
-                console.log(lane + ": new (" + correctValueForLaneNull + ")")
+                console.log(lane + ": new ( correct" + correctValueForLaneNull + ")")
+                //console.log(LaneData)
                 mylane.push(LaneData)
             } else {
                 mylane[lane - 1 + correctValueForLaneNull] = (LaneData)
@@ -79,22 +80,25 @@ function DataMapper(model: {
 
     if (model.jsonData !== undefined) {
         if (model.jsonData.lane !== undefined) {
+           // console.log('DataMapper jsonData ' + model.jsonData)
+           // console.log('DataMapper jsonData state ' + jsonData)
+
             if (model.jsonData !== jsonData) {
                 setJsonData(model.jsonData)
-                //console.log('DataMapper jsondata ' + model.jsonData.lane)
-                onLaneChange(model.jsonData.lane,model.jsonData)
+                console.log('DataMapper jsondata ' + model.jsonData.lane)
+                onLaneChange(model.jsonData.lane, model.jsonData)
             }
         }
     }
 
     return (
-            <BaseFrontendComponent
-                startdelayms={model.startdelayms}
-                EventHeat={eventHeat}
-                lanes={lanes}
-                displayMode={displayMode}
-                runningTime={'100'}
-            />
+        <BaseFrontendComponent
+            startdelayms={model.startdelayms}
+            EventHeat={eventHeat}
+            lanes={lanes}
+            displayMode={displayMode}
+            runningTime={'100'}
+        />
     );
 }
 

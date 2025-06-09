@@ -12,6 +12,7 @@ import Downloads from './pages/downloads';
 import { Container } from '@mui/material';
 import Info from './pages/info';
 import StartPage from './pages/startPage';
+import Live from './pages/live';
 
 const domNode = document.getElementById('root') as HTMLElement;
 const root = createRoot(domNode);
@@ -23,7 +24,7 @@ root.render(
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/start" element={<StartPage />} />
-          <Route path="/live" element={<WsConnect />} />
+          <Route path="/live/:base" element={<Live />} />
           <Route path="/results/:base" element={<Resultlists />} />
           <Route path="/lists/:base" element={<StartLists />} />
           <Route path="/history/:base" element={<History />} />

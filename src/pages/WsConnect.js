@@ -53,6 +53,9 @@ function WsConnect() {
 
     const messageListener = (newmessage) => {
       var jsondata = JSON.parse(newmessage)
+      // lokales object ganzen lauf füllen
+      // https://react.dev/learn/updating-arrays-in-state
+      console.log('WsSocketState: message received ' + newmessage);
       setMessage(jsondata)
     };
 

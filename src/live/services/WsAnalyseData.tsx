@@ -65,6 +65,7 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
 
     function setLaneInfo(jsondata: any) {
         //locklanes = true;
+        console.log('WSAnalyseData setLaneInfo ' + jsondata.lane + ' ' + jsondata.place)
         if (jsondata.place === '0') {
             var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\" }"
             var newjsondata = { ...jsondata, ...JSON.parse(laptime) }
@@ -112,7 +113,7 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
     function checkIncoming(jsondata: any) {
         //console.log(jsondata)
         var messageType = jsondata.type
-        //console.log("message type: " + messageType)
+        console.log("WsAnalyseData Type: " + messageType)
         switch (messageType) {
             case "start": {
                 setStartMode(jsondata.diff)
@@ -192,6 +193,8 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
 
     useEffect(() => {
 
+        console.log('WSAnalyseData useEffect')
+
         setConnectstate(model.connected)
 
         const messageListener = (message: any) => {
@@ -199,6 +202,8 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
             //if (!connectstate) setConnectstate(true)
             checkIncoming(message)
         };
+
+
         messageListener(model.message);
         /*
                 return () => {

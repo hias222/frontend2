@@ -16,7 +16,7 @@ function Resultlists() {
 
     function getAllPages(){
       return  <>
-        <Header numberPage={2} detail={GetUrlPath()} />
+        <Header numberPage={3} detail={GetUrlPath()} />
         <Container maxWidth="lg">
             <Iframe url={result_url}
                 height="1000"
