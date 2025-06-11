@@ -3,6 +3,8 @@ import socketIOClient from 'socket.io-client'
 import WkAnalyseData from '../live/services/WsAnalyseData';
 
 import '../styles/App.scss';
+import checkIncoming from '../shared/utilities/display/checkIncomingData';
+import setLaneInfo from '../shared/utilities/display/setLaneInfo';
 
 /*
 this.state = {
@@ -13,12 +15,16 @@ this.state = {
   DisplayMode: 'race'
 }
 */
+
+var newlanes = [];
+
 function WsConnect() {
 
   var context_path = process.env.REACT_APP_BACKEND_CONTEX_PATH === undefined ? "/ws2/socket.io" : "/" + process.env.REACT_APP_BACKEND_CONTEX_PATH + "/socket.io"
   var get_backend_port = process.env.REACT_APP_BACKEND_PORT === undefined ? "4001" : process.env.REACT_APP_BACKEND_PORT
   var get_backend_url = process.env.REACT_APP_BACKEND_DIRECT === "true" ? window.location.protocol + "//" + window.location.hostname + ":" + window.location.port : process.env.REACT_APP_BACKEND_URL
   var backend_url = get_backend_url === undefined ? window.location.protocol + "//" + window.location.hostname + ":" + get_backend_port : get_backend_url
+
   /*
   function printEnvironment() {
     console.log('context_path: ' + context_path + ' (REACT_APP_BACKEND_CONTEX_PATH)')
@@ -44,6 +50,24 @@ function WsConnect() {
   const [message, setMessage] = useState('');
   const [connected, setConnected] = useState(false);
 
+  const [lanes, setLanes] = useState([]);
+
+
+  function checkMessage(jsondata) {
+    switch (checkIncoming(jsondata)) {
+      case 'lane':
+        //console.log(jsondata);
+        newlanes = setLaneInfo(newlanes, jsondata)
+        setLanes(newlanes)
+        //console.log(newlanes);
+        setMessage(jsondata);
+        break;
+      default:
+        console.log('WsConnect: checkMessage: unknown message type');
+    }
+
+  }
+
   useEffect(() => {
 
     console.log(backend_url + ' Context ' + context_path)
@@ -55,8 +79,9 @@ function WsConnect() {
       var jsondata = JSON.parse(newmessage)
       // lokales object ganzen lauf füllen
       // https://react.dev/learn/updating-arrays-in-state
-      console.log('WsSocketState: message received ' + newmessage);
-      setMessage(jsondata)
+      //console.log('WsSocketState: message received ' + newmessage);
+      //setMessage(jsondata)
+      checkMessage(jsondata)
     };
 
     newSocket.on('FromAPI', messageListener);
@@ -89,7 +114,7 @@ function WsConnect() {
     <div>
 
       <div className="chat-container">
-        <WkAnalyseData message={message} connected={connected} />
+        <WkAnalyseData message={message} connected={connected} lanes={lanes}/>
       </div>
 
       {/*

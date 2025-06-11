@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { eventHeat } from '../../shared/types/EventHeat';
 import getSwimStyles from '../utilities/getSwimStyles';
-import DataMapper from './DataMapper';
+//import DataMapper from './DataMapper';
 
 import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
 import { Grid, Typography } from '@mui/material';
+import { BaseFrontendComponent } from '../components/BaseFrontendComponent';
+import { LaneState } from '../../shared/state/LaneState';
 
 /*
  this.state = {
@@ -17,7 +19,7 @@ import { Grid, Typography } from '@mui/material';
     }
     */
 
-function WkAnalyseData(model: { message: string, connected: boolean }) {
+function WkAnalyseData(model: { message: string, connected: boolean, lanes: [LaneState] }) {
 
     const [connectstate, setConnectstate] = useState<boolean>(false)
     const [DisplayMode, setDisplayMode] = useState('');
@@ -110,108 +112,14 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
         }
     }
 
-    function checkIncoming(jsondata: any) {
-        //console.log(jsondata)
-        var messageType = jsondata.type
-        console.log("WsAnalyseData Type: " + messageType)
-        switch (messageType) {
-            case "start": {
-                setStartMode(jsondata.diff)
-                break;
-            }
-            case "stop": {
-                console.log('stop')
-                setStartdelayms(-1);
-                break;
-            }
-            case "header": {
-                setHeaderInfo(jsondata);
-                break;
-            }
-            case "lane": {
-                setLaneInfo(jsondata)
-                break;
-            }
-            case "clear": {
-                //state.lanes = []
-                //this.clearAll()
-                //this.setDisplayMode("clear")
-                console.log('clear')
-                break;
-            }
-            case "startlist": {
-                // ???
-                if (DisplayMode !== 'startlist') {
-                    setDisplayMode("startlist")
-                    console.log('startlist')
-                }
-                break;
-            }
-            case "race": {
-                // ???
-                setDisplayMode("race")
-                console.log('race')
-                break;
-            }
-            case "clock": {
-                // ???
-                //this.setDisplayMode("clock")
-                console.log('clock')
-                break;
-            }
-            case "time": {
-                setRunningTimeString(jsondata)
-                console.log('running - time ' + jsondata.value)
-                break;
-            }
-            case "message": {
-                //this.setDisplayMode("message")
-                //this.props.onMessageChange(jsondata)
-                console.log('message')
-                break;
-            }
-            case "lenex": {
-                //this.setDisplayMode("message")
-                //this.props.onMessageChange(jsondata)
-                console.log('lenex')
-                break;
-            }
-            case "video": {
-                // ???
-                //this.setDisplayMode("video")
-                //this.props.onMessageChange(jsondata)
-                console.log('video')
-                break;
-            }
-            default: {
-                console.log('default')
-                console.log(jsondata.type)
-                console.log(jsondata)
-            }
-        }
-    }
-
     useEffect(() => {
 
         console.log('WSAnalyseData useEffect')
 
         setConnectstate(model.connected)
 
-        const messageListener = (message: any) => {
-            //var jsondata = JSON.parse(message)
-            //if (!connectstate) setConnectstate(true)
-            checkIncoming(message)
-        };
-
-
-        messageListener(model.message);
-        /*
-                return () => {
-                    console.log('finish WSanalyse')
-                };
-                */
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [model.message, model.connected]);
+    }, [model.message, model.connected, model.lanes]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
     // var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
@@ -221,13 +129,12 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
     function getDataMapper() {
         if (connectstate) {
             return (<Grid item xs={12}>
-                <DataMapper
-                    CompetitionName={CompetitionName}
-                    DisplayMode={DisplayMode}
-                    jsonData={JsonData}
+                <BaseFrontendComponent
                     startdelayms={startdelayms}
-                    runningtime={runningTime}
-                    eventheat={eventheat}
+                    EventHeat={{ eventnr: '1', heatnr: '0', name: '' }}
+                    lanes={model.lanes}
+                    displayMode='race'
+                    runningTime={'100'}
                 />
             </Grid>)
         } else {
@@ -238,16 +145,6 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
                             Keine Verbindung zur Zeitnahme
                         </Typography>
                     </Grid>
-                    {/*
-                    <DataMapper
-                        CompetitionName={CompetitionName}
-                        DisplayMode={DisplayMode}
-                        jsonData={JsonData}
-                        startdelayms={startdelayms}
-                        runningtime={runningTime}
-                        eventheat={eventheat}
-                    />
-            */}
                 </div>)
         }
     }
@@ -262,7 +159,9 @@ function WkAnalyseData(model: { message: string, connected: boolean }) {
             <Grid item xs={2} display="flex" justifyContent={'flex-end'}>
                 {connect_status}
             </Grid>
+
             {getDataMapper()}
+
         </Grid>
 
     );
