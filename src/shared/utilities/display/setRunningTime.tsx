@@ -1,9 +1,11 @@
-function setRunningTime(timemessage: string) {
+function setRunningTime(timemessage: any) {
 
-    if (timemessage === "undefined" || !timemessage) {
-        return ("0")
+    //console.log(timemessage)
+
+    if (timemessage.type !== "undefined" || timemessage.value !== "undefined") {
+        return (timemessage.value)
     } else {
-        return (timemessage)
+        return ("0")
     }
 
 }

@@ -23,11 +23,12 @@ export class BaseFrontendComponent extends React.Component<BaseFrontendInterface
                 />
                 <Grid container spacing={1}>
                     <Grid item xs={12} className={heatheadertime}>
-                        <StartStopComponent
+                        {this.props.runningTime}
+                      {/*   <StartStopComponent
                             startdelayms={this.props.startdelayms}
                             EventHeat={this.props.EventHeat}
                             runningTime={this.props.runningTime}
-                        />
+                        /> */}
                     </Grid>
                     <HeaderStyledLane />
                     {
