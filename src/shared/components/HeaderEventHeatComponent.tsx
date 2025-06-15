@@ -11,6 +11,9 @@ export class HeaderEventHeatComponent extends React.Component<HeaderEventHeatInt
 
     render() {
         let heatname = this.props.EventHeat.name ?? this.props.EventHeat.swimstyle
+        //console.log("--------------------------HEaderEventComponent-----------------------------")
+        //console.log(this.props.EventHeat)
+        //console.log(this.props.EventHeat.eventnr)
         let heatevent = classnames('heatevent');
         return (
             <Grid container spacing={0} className={heatevent}>

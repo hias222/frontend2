@@ -5,6 +5,8 @@ import WkAnalyseData from '../live/services/WsAnalyseData';
 import '../styles/App.scss';
 import checkIncoming from '../shared/utilities/display/checkIncomingData';
 import setLaneInfo from '../shared/utilities/display/setLaneInfo';
+import setHeaderInfo from '../shared/utilities/display/setHeaderInfo';
+import setRunningTime from '../shared/utilities/display/setRunningTime';
 
 /*
 this.state = {
@@ -15,6 +17,8 @@ this.state = {
   DisplayMode: 'race'
 }
 */
+
+// init
 
 var newlanes = [];
 
@@ -51,8 +55,9 @@ function WsConnect() {
   const [connected, setConnected] = useState(false);
 
   const [lanes, setLanes] = useState([]);
-
-
+  const [eventHeat, setEventHeat] = useState('');
+  const [showTime, setShowTime] = useState('');
+  
   function checkMessage(jsondata) {
     switch (checkIncoming(jsondata)) {
       case 'lane':
@@ -62,8 +67,16 @@ function WsConnect() {
         //console.log(newlanes);
         setMessage(jsondata);
         break;
+      case 'header':
+        setEventHeat(setHeaderInfo(jsondata))
+        setMessage(jsondata);
+        break;
+      case 'time':
+        setShowTime(setRunningTime(jsondata))
+        break;
       default:
         console.log('WsConnect: checkMessage: unknown message type');
+        console.log(jsondata)
     }
 
   }
@@ -114,7 +127,7 @@ function WsConnect() {
     <div>
 
       <div className="chat-container">
-        <WkAnalyseData message={message} connected={connected} lanes={lanes}/>
+        <WkAnalyseData message={message} connected={connected} lanes={lanes} header={eventHeat} runningtime={showTime}/>
       </div>
 
       {/*

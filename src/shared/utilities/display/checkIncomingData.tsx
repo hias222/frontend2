@@ -1,14 +1,13 @@
 function checkIncoming(jsondata: any): string {
     //console.log(jsondata)
     var messageType = jsondata.type
-    console.log("WsAnalyseData Type: " + messageType)
+    //console.log("WsAnalyseData Type: " + messageType)
     switch (messageType) {
         case "start": {
             return 'start'
         }
         case "stop": {
             return 'stop'
-            break;
         }
         case "header": {
             return 'header'

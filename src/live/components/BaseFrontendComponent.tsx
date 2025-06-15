@@ -13,6 +13,8 @@ export class BaseFrontendComponent extends React.Component<BaseFrontendInterface
     render() {
 
         let heatheadertime = classnames("heatheadertime")
+        //console.log('-----------------vvvvvvvvvvvvvvvvvvvvvvv')
+        //console.log(this.props.EventHeat)
 
         return (
             <div>

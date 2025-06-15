@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { eventHeat } from '../../shared/types/EventHeat';
-import getSwimStyles from '../utilities/getSwimStyles';
-//import DataMapper from './DataMapper';
 
 import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import PortableWifiOffIcon from '@mui/icons-material/PortableWifiOff';
@@ -9,108 +7,10 @@ import { Grid, Typography } from '@mui/material';
 import { BaseFrontendComponent } from '../components/BaseFrontendComponent';
 import { LaneState } from '../../shared/state/LaneState';
 
-/*
- this.state = {
-      WsConnected: false,
-      HeatNumber: 0,
-      EventNumber: 0,
-      CompetitionName: 'new',
-      DisplayMode: 'race'
-    }
-    */
-
-function WkAnalyseData(model: { message: string, connected: boolean, lanes: [LaneState] }) {
+function WkAnalyseData(model: { message: string, connected: boolean, lanes: [LaneState], header: eventHeat, runningtime: string }) {
 
     const [connectstate, setConnectstate] = useState<boolean>(false)
-    const [DisplayMode, setDisplayMode] = useState('');
-    const [CompetitionName, setCompetitionName] = useState('')
-    const [JsonData, setJsonData] = useState('');
-    const [startdelayms, setStartdelayms] = useState<number>(0);
-    const [runningTime, setRunningTime] = useState('0');
-    const [eventheat, setEventHeat] = useState<eventHeat>({
-        eventnr: '0',
-        heatnr: '0',
-        name: '0',
-    });
 
-    function setHeaderInfo(jsondata: any) {
-
-        if (jsondata.heat !== eventheat.heatnr || jsondata.event !== eventheat.eventnr) {
-
-            setDisplayMode('startlist')
-            var swimstyle = (typeof (jsondata.name) !== "undefined" && jsondata.name)
-                ? jsondata.name : jsondata.distance + "m " + getSwimStyles(jsondata.swimstyle)
-
-            setEventHeat(
-                {
-                    name: swimstyle,
-                    eventnr: jsondata.event,
-                    heatnr: jsondata.heat,
-                    competition: jsondata.competition,
-                    distance: jsondata.distance,
-                    gender: jsondata.gender,
-                    relaycount: jsondata.relaycount,
-                    round: jsondata.round,
-                    swimstyle: jsondata.swimstyle
-                })
-
-            setJsonData(jsondata)
-            setCompetitionName(jsondata.competition)
-
-            console.log('WSAnaylseData ------> Heat' + jsondata.heat)
-
-        } else {
-            console.log("header no event or heat change ")
-        }
-        //setTimeout(this.activatePage, 500);
-    }
-
-    function setLaneInfo(jsondata: any) {
-        //locklanes = true;
-        console.log('WSAnalyseData setLaneInfo ' + jsondata.lane + ' ' + jsondata.place)
-        if (jsondata.place === '0') {
-            var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\" }"
-            var newjsondata = { ...jsondata, ...JSON.parse(laptime) }
-            //activelapdata = true;
-            //this.props.onLaneChange(jsondata.lane, newjsondata)
-            setJsonData(newjsondata)
-            if (DisplayMode !== 'race') {
-                setDisplayMode('race')
-            }
-        } else {
-            var laptime2 = "{ \"lap\": \"false\" }"
-            var newjsondata2 = { ...jsondata, ...JSON.parse(laptime2) }
-            //this.props.onLaneChange(jsondata.lane, newjsondata2)
-            setJsonData(newjsondata2)
-
-            if (jsondata.finishtime === "undefined" || !jsondata.finishtime) {
-                if (DisplayMode !== 'startlist' && DisplayMode !== 'race') {
-                    setDisplayMode('startlist')
-                }
-            } else {
-                if (DisplayMode !== 'race') {
-                    setDisplayMode('race')
-                }
-            }
-        }
-    }
-
-    function setStartMode(startdelay: number) {
-        var calcstartdelay = typeof (startdelay) != 'undefined' ? startdelay : 100
-        console.log('startdelay ' + calcstartdelay)
-        //if (this.state.DisplayMode === 'message' || this.state.DisplayMode === 'clock' || this.state.DisplayMode === 'video') {
-        setDisplayMode('startlist')
-        //}
-        setStartdelayms(calcstartdelay)
-    }
-
-    function setRunningTimeString(time: any) {
-        if (time.value === "undefined" || !time.value) {
-            setRunningTime("0")
-        } else {
-            setRunningTime(time.value);
-        }
-    }
 
     useEffect(() => {
 
@@ -119,22 +19,19 @@ function WkAnalyseData(model: { message: string, connected: boolean, lanes: [Lan
         setConnectstate(model.connected)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [model.message, model.connected, model.lanes]);
+    }, [model.message, model.connected, model.lanes, model.header]);
 
     let connect_status = connectstate === true ? <SignalWifiStatusbar4BarIcon /> : <PortableWifiOffIcon />
-    // var document_title = process.env.REACT_APP_SITE_TITLE === undefined ? "Timing" : process.env.REACT_APP_SITE_TITLE
-    var document_title = "Ergebnisdienst Schwimmen"
-
 
     function getDataMapper() {
         if (connectstate) {
             return (<Grid item xs={12}>
                 <BaseFrontendComponent
-                    startdelayms={startdelayms}
-                    EventHeat={{ eventnr: '1', heatnr: '0', name: '' }}
+                    startdelayms={100}
+                    EventHeat={model.header}
                     lanes={model.lanes}
                     displayMode='race'
-                    runningTime={'100'}
+                    runningTime={model.runningtime}
                 />
             </Grid>)
         } else {
@@ -153,7 +50,7 @@ function WkAnalyseData(model: { message: string, connected: boolean, lanes: [Lan
         <Grid container justifyContent="center">
             <Grid item xs={10} display="flex" justifyContent={'center'}>
                 <Typography variant="h6" component="div" gutterBottom align="center">
-                    {document_title}
+                    {model.header.competition}
                 </Typography>
             </Grid>
             <Grid item xs={2} display="flex" justifyContent={'flex-end'}>

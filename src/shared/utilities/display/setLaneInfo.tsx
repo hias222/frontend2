@@ -4,7 +4,7 @@ function setLaneInfo(lanes: [LaneState], message: any): [LaneState] {
     var laneNumbner = message.lane
     var laneNr: number = parseInt(laneNumbner)
     var lanedata = setLaneSingleLane(message)
-    console.log(lanes.length)
+    // console.log(lanes.length)
 
     if (laneNr > lanes.length) {
         //console.log('new ' + laneNr + ' ' + lanes.length)
@@ -30,7 +30,7 @@ function setLaneInfo(lanes: [LaneState], message: any): [LaneState] {
 function setLaneSingleLane(jsondata: any): any {
     //locklanes = true;
 
-    console.log('WSAnalyseData setLaneInfo ' + jsondata.lane + ' ' + jsondata.place)
+    //console.log('WSAnalyseData setLaneInfo ' + jsondata.lane + ' ' + jsondata.place)
     if (jsondata.place === '0') {
         var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\" }"
         var newjsondata = { ...jsondata, ...JSON.parse(laptime) }
@@ -43,3 +43,35 @@ function setLaneSingleLane(jsondata: any): any {
 }
 
 export default setLaneInfo
+
+
+/* 
+    function setLaneInfo(jsondata: any) {
+        //locklanes = true;
+        console.log('WSAnalyseData setLaneInfo ' + jsondata.lane + ' ' + jsondata.place)
+        if (jsondata.place === '0') {
+            var laptime = "{ \"laptime\": \"" + Date.now() + "\",\"lap\": \"true\" }"
+            var newjsondata = { ...jsondata, ...JSON.parse(laptime) }
+            //activelapdata = true;
+            //this.props.onLaneChange(jsondata.lane, newjsondata)
+            setJsonData(newjsondata)
+            if (DisplayMode !== 'race') {
+                setDisplayMode('race')
+            }
+        } else {
+            var laptime2 = "{ \"lap\": \"false\" }"
+            var newjsondata2 = { ...jsondata, ...JSON.parse(laptime2) }
+            //this.props.onLaneChange(jsondata.lane, newjsondata2)
+            setJsonData(newjsondata2)
+
+            if (jsondata.finishtime === "undefined" || !jsondata.finishtime) {
+                if (DisplayMode !== 'startlist' && DisplayMode !== 'race') {
+                    setDisplayMode('startlist')
+                }
+            } else {
+                if (DisplayMode !== 'race') {
+                    setDisplayMode('race')
+                }
+            }
+        }
+    } */
