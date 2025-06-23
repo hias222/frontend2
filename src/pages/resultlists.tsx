@@ -4,13 +4,14 @@ import Iframe from 'react-iframe';
 import Header from './Header';
 import Footer from './Footer';
 import GetUrlPath from '../shared/utilities/getUrlPath';
+import GetClubUrl from '../shared/utilities/getClubUrl';
 
 function Resultlists() {
 
-    var route_path = "splashdata/" + GetUrlPath()
+    //var route_path = "splashdata/" + GetUrlPath()
     var local_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
     var base_url = process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
-    var result_url = base_url + "/" + route_path + "/result/index.html"
+    var result_url = GetClubUrl(base_url, GetUrlPath())
 
     console.log(result_url)
 

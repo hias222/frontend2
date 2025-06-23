@@ -4,13 +4,14 @@ import Iframe from 'react-iframe';
 import Header from './Header';
 import Footer from './Footer';
 import GetUrlPath from '../shared/utilities/getUrlPath';
+import GetResultUrl from '../shared/utilities/getResultUrl';
 
 function StartLists() {
 
-    var route_path = "splashdata/" + GetUrlPath()
     var local_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
     var base_url = process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
-    var splash_url = base_url + "/" + route_path + "/index.html"
+    var splash_url = GetResultUrl(base_url, GetUrlPath())
+
 
     console.log(splash_url)
 
