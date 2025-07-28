@@ -75,7 +75,7 @@ function StartPage() {
             }} />
 
              <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "bezirk")}>
+                <CardActionArea onClick={e => handleSubmit(e, "kinder")}>
                     <div style={{
                         height: 6
                     }} />
