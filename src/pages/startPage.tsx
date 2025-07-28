@@ -21,58 +21,7 @@ function StartPage() {
     return (<>
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
-            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "bezirk")}>
-                    <div style={{
-                        height: 6
-                    }} />
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 90, width: 320, marginLeft: '1%' }}
-                        image={image_url + "/bezirk/images/card.jpeg"}
-                        alt="Bezirksmeisterschaften Mittelfranken 2025"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Bezirksmeisterschaften 2025
-                        </Typography>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            28/29.06.2025
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <div style={{
-                height: 6
-            }} />
-
-            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "bayern")}>
-                    <div style={{
-                        height: 6
-                    }} />
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 115, width: 330, marginLeft: '1%' }}
-                        image={image_url + "/bayern/images/fcn-bsv.jpeg"}
-                        alt="Bayerische aquafeel Kurzbahnmeisterschaften in Nürnberg"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Bayerische aquafeel Kurzbahnmeisterschaften in Nürnberg
-                        </Typography>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            18/19.10.2025
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <div style={{
-                height: 6
-            }} />
-
+        
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
                 <CardActionArea onClick={e => handleSubmit(e, "dmsm")}>
                     <div style={{
@@ -98,6 +47,29 @@ function StartPage() {
             <div style={{
                 height: 6
             }} />
+
+             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
+                <CardActionArea onClick={e => handleSubmit(e, "bezirk")}>
+                    <div style={{
+                        height: 6
+                    }} />
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 90, width: 320, marginLeft: '1%' }}
+                        image={image_url + "/kinder/images/card.png"}
+                        alt="Kinderschwimmen 2025"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            Kinderschwimmen 2025
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            22.11.2025
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+
         </Container>
         <Footer />
     </>)
