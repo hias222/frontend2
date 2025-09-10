@@ -1,37 +1,52 @@
-import { Container } from '@mui/material';
+import { Container, Button } from '@mui/material';
 
 import Iframe from 'react-iframe';
 import Header from './Header';
 import Footer from './Footer';
 import GetUrlPath from '../shared/utilities/getUrlPath';
-import GetClubUrl from '../shared/utilities/getClubUrl';
+import Downloads from '@mui/icons-material/Refresh';
+import { useState } from 'react';
+import GetResultUrl from '../shared/utilities/getResultUrl';
 
 function Resultlists() {
 
     //var route_path = "splashdata/" + GetUrlPath()
     var local_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
     var base_url = process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
-    var result_url = GetClubUrl(base_url, GetUrlPath())
+    var result_url = GetResultUrl(base_url, GetUrlPath())
 
     console.log(result_url)
 
-    function getAllPages(){
-      return  <>
-        <Header numberPage={3} detail={GetUrlPath()} />
-        <Container maxWidth="lg">
-            <Iframe url={result_url}
-                height="1000"
-                width="100%"
-                id="myId"
-                display="inline"
-            />
-        </Container>
-        <Footer/>
-    </>
+    const [random, setRandom] = useState(0);
+
+    function resetIframe() {
+        setRandom(random + 1);
+    }
+
+    function getAllPages() {
+        return <>
+            <Header numberPage={1} detail={GetUrlPath()} />
+            <Container maxWidth="lg">
+                <div style={{ display: 'flex', justifyContent: 'right', marginBottom: 0.5 }}>
+                    <Button variant="contained" color="primary" onClick={resetIframe}>
+                        {<Downloads />}
+                    </Button>
+                </div>
+                <Iframe
+                    url={result_url}
+                    height="1000"
+                    width="100%"
+                    id="myId"
+                    display="inline"
+                    key={random.toString()} // This will force the iframe to reload when 'random' changes
+                />
+            </Container>
+            <Footer />
+        </>
     }
 
     return (
-         getAllPages()
+        getAllPages()
     );
 
 }

@@ -10,7 +10,7 @@ import WsConnect from "./WsConnect";
 export default function Live() {
 
      return (<>
-        <Header numberPage={2} detail={GetUrlPath()} />
+        <Header numberPage={3} detail={GetUrlPath()} />
         <Container maxWidth="lg">
             <WsConnect />
         </Container>

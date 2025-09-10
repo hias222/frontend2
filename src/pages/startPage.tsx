@@ -15,7 +15,7 @@ function StartPage() {
 
     function handleSubmit(e: { preventDefault: () => void }, base: string) {
         e.preventDefault();
-        navigate("/lists/" + base);
+        navigate("/results/" + base);
     }
 
     return (<>
