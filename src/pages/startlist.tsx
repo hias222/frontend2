@@ -27,7 +27,7 @@ function StartLists() {
     function getAllPages() {
         return <>
             <Header numberPage={2} detail={GetUrlPath()} />
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" disableGutters>
                 <div style={{ display: 'flex', justifyContent: 'right', marginBottom: 0.5 }}>
                     <Button variant="contained" color="primary" onClick={resetIframe}>
                         {<Downloads />}

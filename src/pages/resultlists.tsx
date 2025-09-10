@@ -26,10 +26,10 @@ function Resultlists() {
     function getAllPages() {
         return <>
             <Header numberPage={1} detail={GetUrlPath()} />
-            <Container maxWidth="lg">
-                <div style={{ display: 'flex', justifyContent: 'right', marginBottom: 0.5 }}>
+            <Container maxWidth="lg" disableGutters>
+                <div style={{ display: 'flex', justifyContent: 'right', marginBottom: 0.5  }}>
                     <Button variant="contained" color="primary" onClick={resetIframe}>
-                        {<Downloads />}
+                        <Downloads />
                     </Button>
                 </div>
                 <Iframe
@@ -38,7 +38,7 @@ function Resultlists() {
                     width="100%"
                     id="myId"
                     display="inline"
-                    key={random.toString()} // This will force the iframe to reload when 'random' changes
+                    key={random.toString()}
                 />
             </Container>
             <Footer />
