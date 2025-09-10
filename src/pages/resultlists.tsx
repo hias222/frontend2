@@ -26,9 +26,18 @@ function Resultlists() {
     function getAllPages() {
         return <>
             <Header numberPage={1} detail={GetUrlPath()} />
-            <Container maxWidth="lg" disableGutters>
-                <div style={{ display: 'flex', justifyContent: 'right', marginBottom: 0.5  }}>
-                    <Button variant="contained" color="primary" onClick={resetIframe}>
+            <Container
+                maxWidth="lg"
+                disableGutters
+                sx={{ border: 'none', boxShadow: 'none', background: 'transparent' }} // Keine Randlinie, kein Schatten
+            >
+                <div style={{ display: 'flex', justifyContent: 'right', marginBottom: 0.5 }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={resetIframe}
+                        sx={{ backgroundColor: 'grey.500', '&:hover': { backgroundColor: 'grey.700' } }}
+                    >
                         <Downloads />
                     </Button>
                 </div>
