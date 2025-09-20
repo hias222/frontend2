@@ -1,14 +1,17 @@
 import { Button, Card, CardActions, CardContent, Grid, Typography } from "@mui/material";
 import { club } from "./downloadsType";
+import getRandomString from "../shared/utilities/getRandomString";
 
 function DownloadClub(model: { clubData: [club]; }) {
+
+    var no_cache_string = getRandomString(10)
 
     function getDownloadButton(downloadLink: string | undefined, linkText: string) {
 
         if (downloadLink === undefined) return <Button size="small" disabled={true}>{linkText}</Button>
         //console.log(downloadLink)
 
-        return <Button size="small" href={"../../" + downloadLink} target={'_blank'}>{linkText}</Button>
+        return <Button size="small" href={"../../" + downloadLink + '?nc=' + no_cache_string} target={'_blank'}>{linkText}</Button>
     }
 
     return (

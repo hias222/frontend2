@@ -6,6 +6,7 @@ import { common, club, downloadData } from "./downloadsType";
 import SearchIcon from '@mui/icons-material/Clear'
 import GetUrlPath from "../shared/utilities/getUrlPath";
 import GetPageName from "../naming/GetPageName";
+import getRandomString from "../shared/utilities/getRandomString";
 
 
 function DownloadCards() {
@@ -50,10 +51,11 @@ function DownloadCards() {
         return false
     }
 
+    var no_cache_string = getRandomString(10)
     var route_path = "splashdata/" + GetUrlPath()
     var local_url = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
     var base_url = process.env.REACT_APP_SPLASH_URL === undefined ? local_url : process.env.REACT_APP_SPLASH_URL
-    var json_url = base_url + "/" + route_path + "/downloads.json"
+    var json_url = base_url + "/" + route_path + "/downloads.json?nc=" + no_cache_string
 
 
     //getDownloadData()
