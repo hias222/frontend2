@@ -41,3 +41,22 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+const VERSION_CHECK_INTERVAL = 60000; // 1 minute
+
+async function checkVersion() {
+  try {
+    const res = await fetch('/frontend/meta.json', { cache: 'no-store' });
+    const { version } = await res.json();
+    const currentVersion = localStorage.getItem('app_version');
+    if (currentVersion && currentVersion !== version) {
+      window.location.reload();
+    }
+    localStorage.setItem('app_version', version);
+  } catch (e) {
+    // ignore errors
+  }
+}
+
+setInterval(checkVersion, VERSION_CHECK_INTERVAL);
+checkVersion();
