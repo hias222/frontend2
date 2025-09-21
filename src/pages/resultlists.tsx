@@ -21,6 +21,7 @@ function Resultlists() {
 
     function resetIframe() {
         setRandom(random + 1);
+        window.location.reload();
     }
 
     function getAllPages() {
