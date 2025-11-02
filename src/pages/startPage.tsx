@@ -21,32 +21,6 @@ function StartPage() {
     return (<>
         <Header numberPage={0} show={false} />
         <Container maxWidth="lg">
-        
-            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "bayern")}>
-                    <div style={{
-                        height: 6
-                    }} />
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 115, width: 330, marginLeft: '1%' }}
-                        image={image_url + "/bayern/images/fcn-bsv.jpeg"}
-                        alt="Bayerische aquafeel Kurzbahnmeisterschaften in Nürnberg"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Bayerische aquafeel Kurzbahnmeisterschaften in Nürnberg
-                        </Typography>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            18/19.10.2025
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <div style={{
-                height: 6
-            }} />
 
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
                 <CardActionArea onClick={e => handleSubmit(e, "dmsm")}>
@@ -74,7 +48,7 @@ function StartPage() {
                 height: 6
             }} />
 
-             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
+            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
                 <CardActionArea onClick={e => handleSubmit(e, "kinder")}>
                     <div style={{
                         height: 6
@@ -95,6 +69,10 @@ function StartPage() {
                     </CardContent>
                 </CardActionArea>
             </Card>
+
+            <div style={{
+                height: 6
+            }} />
 
         </Container>
         <Footer />
