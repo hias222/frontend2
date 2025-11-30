@@ -23,22 +23,22 @@ function StartPage() {
         <Container maxWidth="lg">
 
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "dmsm")}>
+                <CardActionArea onClick={e => handleSubmit(e, "dms")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
                         sx={{ height: 115, width: 320, marginLeft: '1%' }}
-                        image={image_url + "/dmsm/images/fcn.jpeg"}
-                        alt="28. Deutscher Mannschaftswettbewerb Schwimmen der Masters"
+                        image={image_url + "/dms/images/fcn.jpeg"}
+                        alt="DMS 2. Bundesliga Süd"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            28. Deutscher Mannschaftswettbewerb Schwimmen der Masters
+                            DMS 2. Bundesliga Süd
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            08.11.2025
+                            13.12.2025
                         </Typography>
                     </CardContent>
                 </CardActionArea>
