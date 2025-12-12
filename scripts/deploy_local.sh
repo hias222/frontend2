@@ -6,8 +6,8 @@ if [ $# -ne 1 ] ; then
     exit 1
 fi
 
-# BASE_DIR=/home/ubuntu/github/frontend2
-BASE_DIR=/Users/matthiasfuchs/Projects/schwimmen/frontend2
+BASE_DIR=/home/ubuntu/github/frontend2
+# BASE_DIR=/Users/matthiasfuchs/Projects/schwimmen/frontend2
 TEMP_DIR=/tmp
 REMOTE_TMP=/tmp
 NGINX_DIR=/usr/share/nginx/html
@@ -17,11 +17,11 @@ MEETING_NAME=$1
 #REMOTE_SERVER_USER=jetson
 #SHARE_FOLDER_NAME=splash
 
-REMOTE_SERVER_NAME=rockpi-4b.fritz.box
-REMOTE_SERVER_USER=rock
+#REMOTE_SERVER_NAME=rockpi-4b.fritz.box
+#REMOTE_SERVER_USER=rock
 
-# REMOTE_SERVER_NAME=rasp4.fritz.box
-# REMOTE_SERVER_USER=pi
+REMOTE_SERVER_NAME=rasp4.fritz.box
+REMOTE_SERVER_USER=pi
 
 # REMOTE_SERVER_NAME=colorado.fritz.box
 # REMOTE_SERVER_USER=ubuntu

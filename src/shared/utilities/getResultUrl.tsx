@@ -4,9 +4,9 @@ function GetResultUrl(base_url: string | undefined, route_path: string | undefin
 
     var no_cache_string = getRandomString(10)
 
-    if (route_path !== undefined && route_path === "dmsm") {
-        //return "https://easywk.swimdata.de/results.php"
-        return base_url + "/splashdata/" + route_path + "/result/index.html?nc=" + no_cache_string
+    if (route_path !== undefined && route_path === "dms") {
+        return "https://easywk.swimdata.de/results.php"
+        //return base_url + "/splashdata/" + route_path + "/result/index.html?nc=" + no_cache_string
     } else {
         return base_url + "/splashdata/" + route_path + "/result/index.html?nc=" + no_cache_string
     }
