@@ -23,22 +23,22 @@ function StartPage() {
         <Container maxWidth="lg">
 
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "dms")}>
+                <CardActionArea onClick={e => handleSubmit(e, "maerz")}>
                     <div style={{
                         height: 6
                     }} />
                     <CardMedia
                         component="img"
-                        sx={{ height: 115, width: 320, marginLeft: '1%' }}
-                        image={image_url + "/dms/images/fcn.jpeg"}
-                        alt="DMS 2. Bundesliga Süd"
+                        sx={{ height: 115, width: 115, marginLeft: '5%' }}
+                        image={image_url + "/maerz/images/fcn.jpeg"}
+                        alt="Nürnberger Märzmeeting"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            DMS 2. Bundesliga Süd
+                            Nürnberger Märzmeeting
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            13.12.2025
+                            28.02 - 01.03.3026
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -48,31 +48,6 @@ function StartPage() {
                 height: 6
             }} />
 
-            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "kinder")}>
-                    <div style={{
-                        height: 6
-                    }} />
-                    <CardMedia
-                        component="img"
-                        sx={{ height: 90, width: 320, marginLeft: '1%' }}
-                        image={image_url + "/kinder/images/card.png"}
-                        alt="Kinderschwimmen 2025"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Kinderschwimmen 2025
-                        </Typography>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            22.11.2025
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-            <div style={{
-                height: 6
-            }} />
 
         </Container>
         <Footer />
