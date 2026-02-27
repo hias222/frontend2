@@ -7,7 +7,7 @@ function Downloads() {
 
     return (
         <>
-        <Header numberPage={3} detail={GetUrlPath()} />
+        <Header numberPage={4} detail={GetUrlPath()} />
         <DownloadCards />
         <Footer/>
         </>
