@@ -31,10 +31,6 @@ function Info() {
             {impressum_response}
             </Typography>
             <Typography sx={{ fontWeight: 'bold' }} >
-                In Zusammenarbeit mit:
-            </Typography>
-            <Typography color="text.primary"><Button variant="text" href="http://www.sgfuerth.de" target={'_blank'}>www.sgfuerth.de</Button></Typography>
-            <Typography sx={{ fontWeight: 'bold' }} >
                 Haftungsausschluss
             </Typography>
             <Typography color="text.primary" >

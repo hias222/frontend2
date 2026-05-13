@@ -23,22 +23,23 @@ function StartPage() {
         <Container maxWidth="lg">
 
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                <CardActionArea onClick={e => handleSubmit(e, "maerz")}>
+                {/* <CardActionArea onClick={e => handleSubmit(e, "maerz")}> */}
+                <CardActionArea >
                     <div style={{
                         height: 6
                     }} />
-                    <CardMedia
+{/*                     <CardMedia
                         component="img"
                         sx={{ height: 115, width: 115, marginLeft: '5%' }}
                         image={image_url + "/maerz/images/fcn.jpeg"}
                         alt="Nürnberger Märzmeeting"
-                    />
+                    /> */}
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Nürnberger Märzmeeting
+                            Ergebnisdienst Schwimmen
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            28.02 - 01.03.3026
+                            Es sind aktuell keine Schwimm Meetings in Planung. Sobald es neue Informationen gibt, werden diese hier veröffentlicht.
                         </Typography>
                     </CardContent>
                 </CardActionArea>

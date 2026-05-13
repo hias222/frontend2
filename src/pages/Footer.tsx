@@ -13,7 +13,7 @@ export default function Footer() {
     return (
         <BottomNavigation>
             <BottomNavigationAction component={Link} label="Info" to={"/info/" + GetUrlPath()} icon={<Info />} sx={{ md: 0 }} />
-            <Typography color="text.primary" sx={{ mt: 1 }}><Button variant="text" href="http://www.sgfuerth.de" target={'_blank'}>www.sgfuerth.de</Button></Typography>
+            <Typography color="text.primary" sx={{ mt: 1 }}></Typography>
         </BottomNavigation>
     );
 }
