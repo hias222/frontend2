@@ -7,18 +7,24 @@ if [ $# -ne 1 ] ; then
 fi
 
 # BASE_DIR=/home/ubuntu/github/frontend2
-BASE_DIR=/Users/matthiasfuchs/Projects/schwimmen/frontend2
+BASE_DIR=/home/hiasf/git/frontend2
 TEMP_DIR=/tmp
 REMOTE_TMP=/tmp
 NGINX_DIR=/usr/share/nginx/html
 APP_NAME=frontend
 MEETING_NAME=$1
+
 #REMOTE_SERVER_NAME=jetson.fritz.box
 #REMOTE_SERVER_USER=jetson
 #SHARE_FOLDER_NAME=splash
 
-REMOTE_SERVER_NAME=rockpi-4b.fritz.box
-REMOTE_SERVER_USER=rock
+# REMOTE_SERVER_NAME=rockpi-4b.fritz.box
+# REMOTE_SERVER_USER=rock
+# MY_KEY="~/.ssh/id_rsa"
+
+REMOTE_SERVER_NAME=result.swimdata.de
+REMOTE_SERVER_USER=nginx
+MY_KEY="~/.aws/ec2-key-pair.pem"
 
 # REMOTE_SERVER_NAME=rasp4.fritz.box
 # REMOTE_SERVER_USER=pi
@@ -54,7 +60,7 @@ cd $BASE_DIR
 
 function exec_remote(){
     echo "exec $1"
-    ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} $1
+    ssh -i $MY_KEY ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME} $1
 }
 
 # build
@@ -63,8 +69,16 @@ npm run build
 echo $PWD
 cd build
 tar -cvzf $TEMP_DIR/${APP_NAME}.tar.gz *
-scp $TEMP_DIR/${APP_NAME}.tar.gz ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME}:${REMOTE_TMP}
+scp -i $MY_KEY $TEMP_DIR/${APP_NAME}.tar.gz ${REMOTE_SERVER_USER}@${REMOTE_SERVER_NAME}:${REMOTE_TMP}
 rm $TEMP_DIR/${APP_NAME}.tar.gz
+
+if [ "$REMOTE_SERVER_USER" = "nginx" ]; then
+   exec_remote "rm -rf ${NGINX_DIR}/${APP_NAME}"
+   exec_remote "mkdir ${NGINX_DIR}/${APP_NAME}"
+   exec_remote "tar -xvzf ${REMOTE_TMP}/${APP_NAME}.tar.gz -C ${NGINX_DIR}/${APP_NAME}"
+   exec_remote "rm ${REMOTE_TMP}/${APP_NAME}.tar.gz"
+   exit 0
+fi
 
 exec_remote "sudo ls ${REMOTE_TMP}/${APP_NAME}.tar.gz"
 exec_remote "sudo rm -rf ${NGINX_DIR}/${APP_NAME}"
