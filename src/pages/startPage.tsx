@@ -15,7 +15,7 @@ function StartPage() {
 
     function handleSubmit(e: { preventDefault: () => void }, base: string) {
         e.preventDefault();
-        navigate("/results/" + base);
+        navigate("/downloads/" + base);
     }
 
     return (<>
@@ -23,23 +23,22 @@ function StartPage() {
         <Container maxWidth="lg">
 
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
-                {/* <CardActionArea onClick={e => handleSubmit(e, "maerz")}> */}
-                <CardActionArea >
+                <CardActionArea onClick={e => handleSubmit(e, "dmsj")}>
                     <div style={{
                         height: 6
                     }} />
-{/*                     <CardMedia
+                    <CardMedia
                         component="img"
-                        sx={{ height: 115, width: 115, marginLeft: '5%' }}
-                        image={image_url + "/maerz/images/fcn.jpeg"}
-                        alt="Nürnberger Märzmeeting"
-                    /> */}
+                        sx={{ height: 100, width: 299, marginLeft: '5%' }}
+                        image={image_url + "/dmsj/images/fcn_bsv.jpg"}
+                        alt="DMSJ - 64. Landesentscheid"
+                    /> 
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Ergebnisdienst Schwimmen
+                            DMSJ - 64. Landesentscheid „Bayern“ 2026 in Nürnberg
                         </Typography>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            Es sind aktuell keine Schwimm Meetings in Planung. Sobald es neue Informationen gibt, werden diese hier veröffentlicht.
+                            21./22. November 2026
                         </Typography>
                     </CardContent>
                 </CardActionArea>

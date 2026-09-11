@@ -14,20 +14,17 @@ NGINX_DIR=/usr/share/nginx/html
 APP_NAME=frontend
 MEETING_NAME=$1
 
-#REMOTE_SERVER_NAME=jetson.fritz.box
-#REMOTE_SERVER_USER=jetson
-#SHARE_FOLDER_NAME=splash
-
-# REMOTE_SERVER_NAME=rockpi-4b.fritz.box
+# REMOTE_SERVER_NAME=rock-4se.fritz.box
 # REMOTE_SERVER_USER=rock
 # MY_KEY="~/.ssh/id_rsa"
 
-REMOTE_SERVER_NAME=result.swimdata.de
-REMOTE_SERVER_USER=nginx
-MY_KEY="~/.aws/ec2-key-pair.pem"
+#REMOTE_SERVER_NAME=result.swimdata.de
+#REMOTE_SERVER_USER=nginx
+#MY_KEY="~/.aws/ec2-key-pair.pem"
 
-# REMOTE_SERVER_NAME=rasp4.fritz.box
-# REMOTE_SERVER_USER=pi
+REMOTE_SERVER_NAME=pi5.fritz.box
+REMOTE_SERVER_USER=pi
+MY_KEY="~/.ssh/id_rsa"
 
 # REMOTE_SERVER_NAME=colorado.fritz.box
 # REMOTE_SERVER_USER=ubuntu
