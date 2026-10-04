@@ -7,7 +7,8 @@ if [ $# -ne 1 ] ; then
 fi
 
 # BASE_DIR=/home/ubuntu/github/frontend2
-BASE_DIR=/home/hiasf/git/frontend2
+BASE_DIR=/Users/matthiasfuchs/Projects/schwimmen/frontend2
+# BASE_DIR=/home/hiasf/git/frontend2
 TEMP_DIR=/tmp
 REMOTE_TMP=/tmp
 NGINX_DIR=/usr/share/nginx/html

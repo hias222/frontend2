@@ -74,6 +74,34 @@ function StartPage() {
                 height: 6
             }} />
 
+            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
+                <CardActionArea onClick={e => handleSubmit(e, "maerz")}>
+                    <div style={{
+                        height: 6
+                    }} />
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 104, width: 100, marginLeft: '5%' }}
+                        image={image_url + "/maerz/images/fcn.jpeg"}
+                        alt="März Meeting"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            März Meeting in Nürnberg
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            06./07. März 2027
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+
+
+
+            <div style={{
+                height: 6
+            }} />
+
 
         </Container>
         <Footer />
