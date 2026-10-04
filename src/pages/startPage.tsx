@@ -23,6 +23,32 @@ function StartPage() {
         <Container maxWidth="lg">
 
             <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
+                <CardActionArea onClick={e => handleSubmit(e, "lange")}>
+                    <div style={{
+                        height: 6
+                    }} />
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 104, width: 100, marginLeft: '5%' }}
+                        image={image_url + "/lange/images/fcn.jpg"}
+                        alt="Nürnberger Lange Strecken"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            Nürnberger Lange Strecken
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                            07./08. November 2026
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+
+            <div style={{
+                height: 6
+            }} />
+
+            <Card sx={{ minWidth: 275, boxShadow: 6 }}  >
                 <CardActionArea onClick={e => handleSubmit(e, "dmsj")}>
                     <div style={{
                         height: 6
@@ -32,7 +58,7 @@ function StartPage() {
                         sx={{ height: 100, width: 299, marginLeft: '5%' }}
                         image={image_url + "/dmsj/images/fcn_bsv.jpg"}
                         alt="DMSJ - 64. Landesentscheid"
-                    /> 
+                    />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             DMSJ - 64. Landesentscheid „Bayern“ 2026 in Nürnberg
